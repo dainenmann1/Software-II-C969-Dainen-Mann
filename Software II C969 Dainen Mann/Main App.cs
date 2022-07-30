@@ -16,10 +16,5 @@ namespace Software_II_C969_Dainen_Mann
 		{
 			InitializeComponent();
 		}
-
-		private void MainLoginB_Click(object sender, EventArgs e)
-		{
-
-		}
 	}
 }
