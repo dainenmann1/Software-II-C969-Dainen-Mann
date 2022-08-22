@@ -29,9 +29,9 @@ namespace Software_II_C969_Dainen_Mann
 			}
 		}
 
-		static public int FindUser(string userName, string password)
+		static public int loginUser(string userName, string password)
 		{
-			MySqlConnection conn = new MySqlConnection(DBHelp.constr);
+			MySqlConnection conn = new MySqlConnection(DBHelp.connStr);
 			conn.Open();
 			MySqlCommand cmd = new MySqlCommand($"SELECT userId FROM user WHERE userName = '{userName}' AND password = '{password}'", conn);
 			MySqlDataReader rdr = cmd.ExecuteReader();
@@ -39,8 +39,13 @@ namespace Software_II_C969_Dainen_Mann
 			if (rdr.HasRows) 
 			{
 				rdr.Read();
-				
+				DBHelp.setUserId(Convert.ToInt32(rdr[0]));
+				DBHelp.setUserName(userName);
+				rdr.Close();
+				conn.Close();
+				return DBHelp.getUserId();
 			}
+			return 0;
 		}
 		private void userLabel_Click(object sender, EventArgs e)
 		{
@@ -49,11 +54,16 @@ namespace Software_II_C969_Dainen_Mann
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
-			if (FindUser(userBox.Text, pwBox.Text) != 0) 
+			if (loginUser(userBox.Text, pwBox.Text) != 0) 
 			{
 				this.Hide();
 				
 			}
 		}
-	}
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
