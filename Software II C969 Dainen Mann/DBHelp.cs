@@ -13,15 +13,18 @@ namespace Software_II_C969_Dainen_Mann
 {
 	class DBHelp
 	{
+        //VARIABLES
         public static string connStr = "Host=localhost;Port=3306;Database=client_schedule;Username=sqlUser;Password=Passw0rd!";
         private static Dictionary<int, Hashtable> _appointments = new Dictionary<int, Hashtable>();
         private static int _userId;
         private static string _userName;
+
+        //GETTERS AND SETTERS
         public static string getUsername()
         {
             return _userName;
         }
-
+        
         public static void setUserName(string userName)
         {
             _userName = userName;
@@ -46,41 +49,31 @@ namespace Software_II_C969_Dainen_Mann
             _appointments = appointments;
         }
 
-        public static int newID(List<int> idList)
-        {
-            int highestID = 0;
-            foreach (int id in idList)
-            {
-                if (id > highestID)
-                    highestID = id;
-            }
-            return highestID + 1;
-        }
 
-        public static string createTimestamp()
+        public static string cTimestamp()
         {
             return DateTime.Now.ToString("u");
         }
 
-        public static int createID(string table)
+        public static int cID(string table)
         {
-            MySqlConnection c = new MySqlConnection(connStr);
-            c.Open();
-            MySqlCommand cmd = new MySqlCommand($"SELECT {table + "Id"} FROM {table}", c);
-            MySqlDataReader rdr = cmd.ExecuteReader();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand($"SELECT {table + "Id"} FROM {table}", conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
             List<int> idList = new List<int>();
-            while (rdr.Read())
+            while (reader.Read())
             {
-                idList.Add(Convert.ToInt32(rdr[0]));
+                idList.Add(Convert.ToInt32(reader[0]));
             }
-            rdr.Close();
-            c.Close();
+            reader.Close();
+            conn.Close();
             return newID(idList);
         }
 
         static public int createRec(string timestamp, string userName, string table, string partOfQuery, int userId = 0)
         {
-            int recId = createID(table);
+            int recId = cID(table);
             string recInsert;
             if (userId == 0)
             {
@@ -102,6 +95,16 @@ namespace Software_II_C969_Dainen_Mann
             return recId;
         }
 
+        public static int newID(List<int> idList)
+        {
+            int highestID = 0;
+            foreach (int id in idList)
+            {
+                if (id > highestID)
+                    highestID = id;
+            }
+            return highestID + 1;
+        }
         static public int findCustomer(string search)
         {
             int customerId;

@@ -16,5 +16,20 @@ namespace Software_II_C969_Dainen_Mann
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
