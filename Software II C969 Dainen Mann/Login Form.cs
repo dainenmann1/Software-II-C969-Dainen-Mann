@@ -56,6 +56,7 @@ namespace Software_II_C969_Dainen_Mann
 			pwLabel.Text = "Clave";
 			loginButton.Text = "Acceso";
 			cancelButton.Text = "Cancelar";
+			errorMessage = "El nombre de usuario y la contrasena no coinciden, intentalo de nuevo";
         }
 		static public int loginUser(string userName, string password)
 		{

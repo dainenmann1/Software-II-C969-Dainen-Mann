@@ -29,35 +29,41 @@ namespace Software_II_C969_Dainen_Mann
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.button1 = new System.Windows.Forms.Button();
+            this.addApptButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.usernameText = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
+            this.apptCalendar = new System.Windows.Forms.DataGridView();
+            this.weekRadio = new System.Windows.Forms.RadioButton();
+            this.monthRadio = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.apptCalendar)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // addApptButton
             // 
-            this.button1.Location = new System.Drawing.Point(14, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 27);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addApptButton.Location = new System.Drawing.Point(14, 346);
+            this.addApptButton.Name = "addApptButton";
+            this.addApptButton.Size = new System.Drawing.Size(109, 27);
+            this.addApptButton.TabIndex = 0;
+            this.addApptButton.Text = "Add Appointment";
+            this.addApptButton.UseVisualStyleBackColor = true;
+            this.addApptButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(108, 50);
+            this.button2.Location = new System.Drawing.Point(189, 346);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 27);
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(203, 50);
+            this.button3.Location = new System.Drawing.Point(298, 346);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 27);
             this.button3.TabIndex = 2;
@@ -67,7 +73,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(297, 50);
+            this.button4.Location = new System.Drawing.Point(412, 346);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 27);
             this.button4.TabIndex = 3;
@@ -95,20 +101,56 @@ namespace Software_II_C969_Dainen_Mann
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // apptCalendar
+            // 
+            this.apptCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.apptCalendar.Location = new System.Drawing.Point(14, 104);
+            this.apptCalendar.Name = "apptCalendar";
+            this.apptCalendar.Size = new System.Drawing.Size(452, 218);
+            this.apptCalendar.TabIndex = 6;
+            // 
+            // weekRadio
+            // 
+            this.weekRadio.AutoSize = true;
+            this.weekRadio.Checked = true;
+            this.weekRadio.Location = new System.Drawing.Point(14, 79);
+            this.weekRadio.Name = "weekRadio";
+            this.weekRadio.Size = new System.Drawing.Size(56, 19);
+            this.weekRadio.TabIndex = 7;
+            this.weekRadio.TabStop = true;
+            this.weekRadio.Text = "Week";
+            this.weekRadio.UseVisualStyleBackColor = true;
+            this.weekRadio.CheckedChanged += new System.EventHandler(this.weekRadio_CheckedChanged);
+            // 
+            // monthRadio
+            // 
+            this.monthRadio.AutoSize = true;
+            this.monthRadio.Location = new System.Drawing.Point(91, 79);
+            this.monthRadio.Name = "monthRadio";
+            this.monthRadio.Size = new System.Drawing.Size(60, 19);
+            this.monthRadio.TabIndex = 8;
+            this.monthRadio.Text = "Month";
+            this.monthRadio.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 607);
+            this.Controls.Add(this.monthRadio);
+            this.Controls.Add(this.weekRadio);
+            this.Controls.Add(this.apptCalendar);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.usernameText);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addApptButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainForm";
             this.Text = "Main Form";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.apptCalendar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,12 +158,15 @@ namespace Software_II_C969_Dainen_Mann
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addApptButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label usernameText;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.DataGridView apptCalendar;
+        private System.Windows.Forms.RadioButton weekRadio;
+        private System.Windows.Forms.RadioButton monthRadio;
     }
 }
 

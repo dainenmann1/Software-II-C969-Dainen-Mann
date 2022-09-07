@@ -39,12 +39,12 @@ namespace Software_II_C969_Dainen_Mann
             _userId = userId;
         }
 
-        public static Dictionary<int, Hashtable> getAppointments()
+        public static Dictionary<int, Hashtable> getAppts()
         {
             return _appointments;
         }
 
-        public static void setAppointments(Dictionary<int, Hashtable> appointments)
+        public static void setAppts(Dictionary<int, Hashtable> appointments)
         {
             _appointments = appointments;
         }
@@ -86,11 +86,11 @@ namespace Software_II_C969_Dainen_Mann
                 $" VALUES ('{recId}', {partOfQuery}, '{userId}', '{timestamp}', '{userName}', '{timestamp}', '{userName}')";
             }
 
-            MySqlConnection c = new MySqlConnection(connStr);
-            c.Open();
-            MySqlCommand cmd = new MySqlCommand(recInsert, c);
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(recInsert, conn);
             cmd.ExecuteNonQuery();
-            c.Close();
+            conn.Close();
 
             return recId;
         }
