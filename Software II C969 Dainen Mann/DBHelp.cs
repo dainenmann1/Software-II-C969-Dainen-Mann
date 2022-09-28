@@ -11,33 +11,17 @@ using MySql.Data.MySqlClient;
 
 namespace Software_II_C969_Dainen_Mann
 {
-	class DBHelp
-	{
+    class DBHelp
+    {
         //VARIABLES
         public static string connStr = "Host=localhost;Port=3306;Database=client_schedule;Username=sqlUser;Password=Passw0rd!";
+        public static List<Appointment> appointmentList = new List<Appointment>();
         private static Dictionary<int, Hashtable> _appointments = new Dictionary<int, Hashtable>();
-        private static int _userId;
-        private static string _userName;
+        public static int UserID { get; set; }
+        public static string UserName { get; set; }
+        public static List<MySqlParameter> spl = new List<MySqlParameter>();
+        public static string ConnStr {get; set;}
 
-        //GETTERS AND SETTERS
-        public static string getUsername()
-        {
-            return _userName;
-        }
-        
-        public static void setUserName(string userName)
-        {
-            _userName = userName;
-        }
-        public static int getUserId()
-        {
-            return _userId;
-        }
-
-        public static void setUserId(int userId)
-        {
-            _userId = userId;
-        }
 
         public static Dictionary<int, Hashtable> getAppts()
         {
@@ -52,9 +36,40 @@ namespace Software_II_C969_Dainen_Mann
 
         public static string cTimestamp()
         {
-            return DateTime.Now.ToString("u");
+            return DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+        }
+        public static string DateSQLFormat(DateTime dateValue)
+        {
+            string formatForMySql = dateValue.ToString("yyyy-MM-dd HH:mm");
+
+            return formatForMySql;
         }
 
+        public static DataTable Schedule(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("message", nameof(id));
+            }
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string query = $"SELECT (select customerName from customer where customerId = appointment.customerId) as 'Customer',  type as 'Type', start as 'Start Time', end as 'End Time', createdBy as 'Created By', location as 'Location', title as 'Title' FROM appointment order by start;";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+
+            foreach (DataRow row in dt.Rows)
+            {
+                DateTime utcStart = Convert.ToDateTime(row["Start Time"]);
+                DateTime utcEnd = Convert.ToDateTime(row["End Time"]);
+                row["Start Time"] = TimeZone.CurrentTimeZone.ToLocalTime(utcStart);
+                row["End Time"] = TimeZone.CurrentTimeZone.ToLocalTime(utcEnd);
+            }
+
+            conn.Close();
+            return dt;
+        }
         public static int cID(string table)
         {
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -71,6 +86,29 @@ namespace Software_II_C969_Dainen_Mann
             return newID(idList);
         }
 
+        public static DataTable FirstCal(string filter, bool week)
+        {
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            string query = week ? $"SELECT (select customerName from customer where customerId = appointment.customerId) as 'Customer',  customerId as 'Customer Id', title as 'Title', type as 'Type', start as 'Start Time', end as 'End Time', location as 'Location' FROM appointment where start < '{filter}' and end < '{filter}'  and end > now() order by start;"
+                : $"SELECT  (select customerName from customer where customerId = appointment.customerId) as 'Customer', customerId as 'Customer Id', title as 'Title', type as 'Type', start as 'Start Time', end as 'End Time', location as 'Location' FROM appointment where start < '{filter}' and end < '{filter}' and end > now() order by start;";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+
+            foreach (DataRow row in dt.Rows)
+            {
+                DateTime utcStart = Convert.ToDateTime(row["Start Time"]);
+                DateTime utcEnd = Convert.ToDateTime(row["End Time"]);
+                row["Start Time"] = TimeZone.CurrentTimeZone.ToLocalTime(utcStart);
+                row["End Time"] = TimeZone.CurrentTimeZone.ToLocalTime(utcEnd);
+            }
+
+            conn.Close();
+            return dt;
+
+        }
         static public int createRec(string timestamp, string userName, string table, string partOfQuery, int userId = 0)
         {
             int recId = cID(table);
@@ -82,7 +120,7 @@ namespace Software_II_C969_Dainen_Mann
             }
             else
             {
-                recInsert = $"INSERT INTO {table} (appointmentId, customerId, start, end, type, userId, createDate, createdBy, lastUpdate, lastUpdateBy)" +
+                recInsert = $"INSERT INTO {table} (appointmentId, customerId, title, start, end, type, userId, createDate, createdBy, lastUpdate, lastUpdateBy)" +
                 $" VALUES ('{recId}', {partOfQuery}, '{userId}', '{timestamp}', '{userName}', '{timestamp}', '{userName}')";
             }
 
@@ -90,7 +128,6 @@ namespace Software_II_C969_Dainen_Mann
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(recInsert, conn);
             cmd.ExecuteNonQuery();
-            conn.Close();
 
             return recId;
         }
@@ -204,12 +241,56 @@ namespace Software_II_C969_Dainen_Mann
             return appointmentDict;
         }
 
-        static public string convertToTimezone(string dateTime)
+        static public string ConvertToTimezone(string dateTime)
         {
             DateTime utcDateTime = DateTime.Parse(dateTime.ToString());
             DateTime localDateTime = utcDateTime.ToLocalTime();
 
-            return localDateTime.ToString("MM/dd/yyyy hh:mm tt");
+            return localDateTime.ToString("yyyy-MM-dd hh:mm:ss");
+        }
+
+        //MySQL methods
+        public static MySqlDataReader ExecuteReader(string query, List<MySqlParameter> spl, string connStr)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection(connStr);
+                if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    if (spl.Count > 0) { cmd.Parameters.AddRange(spl.ToArray()); }
+                    MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                    spl.Clear();
+                    return dr;
+                }
+            }
+            catch (Exception ex)
+            {
+                spl.Clear();
+                Logger.LogMessage("ErrorLog", ex.Message, "error", "SQL_ExecuteReader");
+                return null;
+            }
+        }
+        public static void ExecuteNonQuery(string query, List<MySqlParameter> spl, string connStr)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        if (spl.Count > 0) { cmd.Parameters.AddRange(spl.ToArray()); }
+                        cmd.ExecuteNonQuery();
+                        spl.Clear();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                spl.Clear();
+                Logger.LogMessage("ErrorLog", ex.Message, "error", "SQL_ExecuteNonQuery");
+            }
         }
 
     }

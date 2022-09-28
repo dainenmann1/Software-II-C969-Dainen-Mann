@@ -68,11 +68,11 @@ namespace Software_II_C969_Dainen_Mann
 			if (reader.HasRows) 
 			{
 				reader.Read();
-				DBHelp.setUserId(Convert.ToInt32(reader[0]));
-				DBHelp.setUserName(userName);
+				DBHelp.UserID = reader.GetInt32(0);
+				DBHelp.UserName = reader.GetString(0);
 				reader.Close();
 				conn.Close();
-				return DBHelp.getUserId();
+				return DBHelp.UserID;
 			}
 			return 0;
 		}
@@ -86,14 +86,19 @@ namespace Software_II_C969_Dainen_Mann
 			if (loginUser(userBox.Text, pwBox.Text) != 0) 
 			{
 				this.Hide();
-				MainForm mainForm = new MainForm();
-				mainForm.Show();
+				MainForm MainForm = new MainForm
+				{
+					loginForm = this
+				};
+				Logger.WriteUserLoginLog(DBHelp.UserName);
+
+				MainForm.Show();
 			}
-            else
-            {
+			else
+			{
 				MessageBox.Show(errorMessage);
 				pwBox.Text = "";
-            }
+			}
 		}
 
         private void Login_Load(object sender, EventArgs e)

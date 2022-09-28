@@ -14,17 +14,113 @@ namespace Software_II_C969_Dainen_Mann
 {
 	public partial class MainForm : Form
 	{
+        public Login loginForm;
+
+        public static string connStr = DBHelp.ConnStr;
 		public MainForm()
 		{
 			InitializeComponent();
-            apptCalendar.DataSource = updateCalendar(weekRadio.Checked);
-		}
+            MainForm_Load(allRadio.Checked = true);
+        }
 
-        static public Array updateCalendar(bool weekView)
+        public static string SetApptID = "";
+        public static string SetCustName = "";
+
+        private void PopulateAppointmentList()
+        {
+            apptFlowPanel.Controls.Clear();
+
+            if (DBHelp.appointmentList.Count > 0)
+            {
+                string appointmentInfo;
+
+                //Lambda used to simplify foreach statement
+                DBHelp.appointmentList.ForEach(a =>
+                {
+                    appointmentInfo = "";
+                    appointmentInfo += "Appointment for " + a.CustomerName + " from " + a.Start.ToString("yyyy-MM-dd HH:mm") + " to " + a.End.ToString("yyyy-MM-dd HH:mm") + Environment.NewLine;
+                    appointmentInfo += "Title: " + a.Title + Environment.NewLine;
+                    appointmentInfo += "Description: " + a.Description + Environment.NewLine;
+                    appointmentInfo += "Contact: " + a.Contact + Environment.NewLine;
+                    appointmentInfo += "Location: " + a.Location + Environment.NewLine;
+                    appointmentInfo += "URL: " + a.Url + Environment.NewLine;
+                    appointmentInfo += "Meeting type: " + a.Type;
+                    TextBox t = new TextBox
+                    {
+                        Text = appointmentInfo,
+                        AutoSize = false,
+                        Width = 500,
+                        Height = 100,
+                        BorderStyle = BorderStyle.FixedSingle,
+                        ScrollBars = ScrollBars.Vertical,
+                        ReadOnly = true,
+                        Multiline = true,
+                        WordWrap = true
+                    };
+                    if (DBHelp.appointmentList.Count <= 3) { t.Width = 517; }
+                    apptFlowPanel.Controls.Add(t);
+                });
+            }
+        }
+        private void LoadUpcomingAppointments()
+        {
+            MySqlDataReader dr = null;
+            DateTime curUtcDateTime = DateTime.UtcNow;
+
+            DBHelp.appointmentList.Clear();
+
+            DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID));
+            DBHelp.spl.Add(new MySqlParameter("@Now", curUtcDateTime));
+            if (allRadio.Checked)
+            {
+                dr = DBHelp.ExecuteReader("select a.appointmentId, c.customerName, a.title, a.description, a.location, a.contact, a.type, a.url, a.start, a.end, a.createDate from appointment a inner join customer c on c.customerId = a.customerId where userId = @UserId and end >= @Now order by start", DBHelp.spl, DBHelp.connStr);
+            }
+            else if (weekRadio.Checked)
+            {
+                DBHelp.spl.Add(new MySqlParameter("@FromNow", curUtcDateTime.AddDays(7)));
+                dr = DBHelp.ExecuteReader("select a.appointmentId, c.customerName, a.title, a.description, a.location, a.contact, a.type, a.url, a.start, a.end, a.createDate from appointment a inner join customer c on c.customerId = a.customerId where userId = @UserId and end >= @Now and end <= @FromNow order by start", DBHelp.spl, DBHelp.connStr);
+            }
+            else if (monthRadio.Checked)
+            {
+                DBHelp.spl.Add(new MySqlParameter("@FromNow", curUtcDateTime.AddMonths(1)));
+                dr = DBHelp.ExecuteReader("select a.appointmentId, c.customerName, a.title, a.description, a.location, a.contact, a.type, a.url, a.start, a.end, a.createDate from appointment a inner join customer c on c.customerId = a.customerId where userId = @UserId and end >= @Now and end <= @FromNow order by start", DBHelp.spl, DBHelp.connStr);
+            }
+
+            if (dr != null && dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    DBHelp.appointmentList.Add(new Appointment(dr.GetInt32(0), dr.GetString(1), dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetString(6), dr.GetString(7), TimeZoneInfo.ConvertTimeFromUtc(dr.GetDateTime(8), TimeZoneInfo.Local), TimeZoneInfo.ConvertTimeFromUtc(dr.GetDateTime(9), TimeZoneInfo.Local)));
+                }
+            }
+
+            PopulateAppointmentList();
+        }
+
+        public void MainForm_Load(bool week)
+        {
+          
+        }
+
+        public static void ReminderCheck(DataGridView apptCalendar)
+        {
+            foreach (DataGridViewRow row in apptCalendar.Rows)
+            {
+                DateTime now = DateTime.UtcNow;
+                DateTime start = DateTime.Parse(row.Cells[4].Value.ToString()).ToUniversalTime();
+                TimeSpan nowUntilStartOfApp = now - start;
+                if (nowUntilStartOfApp.TotalMinutes >= -15 && nowUntilStartOfApp.TotalMinutes < 1)
+                {
+                    MessageBox.Show($"Reminder: you have a meeting within 15 minutes. ");
+                }
+            }
+        }
+
+            static public Array updateCalendar(bool weekView)
         {
             MySqlConnection conn = new MySqlConnection(DBHelp.connStr);
             conn.Open();
-            string query = $"Select customerId, type, start, end, appointmentId, userId FROM appointment WHERE userId = '{DBHelp.getUserId()}'";
+            string query = $"Select customerId, type, start, end, appointmentId, userId FROM appointment WHERE userId = '{DBHelp.UserID}'";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -96,19 +192,14 @@ namespace Software_II_C969_Dainen_Mann
                      {
                       ID = row.Key,
                       Type = row.Value["type"],
-                      StartTime = DBHelp.convertToTimezone(row.Value["start"].ToString()),
-                      EndTime = DBHelp.convertToTimezone(row.Value["end"].ToString()),
+                      StartTime = DBHelp.ConvertToTimezone(row.Value["start"].ToString()),
+                      EndTime = DBHelp.ConvertToTimezone(row.Value["end"].ToString()),
                        Customer = row.Value["customerName"]
                      };
 
             conn.Close();
 
             return appointmentArray.ToArray();
-        }
-
-        public void showCalendar()
-        {
-            apptCalendar.DataSource = updateCalendar(weekRadio.Checked);
         }
 
 
@@ -129,7 +220,7 @@ namespace Software_II_C969_Dainen_Mann
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            LoadUpcomingAppointments();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -139,7 +230,7 @@ namespace Software_II_C969_Dainen_Mann
 
         private void weekRadio_CheckedChanged(object sender, EventArgs e)
         {
-            showCalendar();
+            LoadUpcomingAppointments();
         }
 
         //Add Appointment Button
@@ -148,6 +239,16 @@ namespace Software_II_C969_Dainen_Mann
             AddAppt addAppt = new AddAppt();
             addAppt.mainFormObject = this;
             addAppt.Show();
+        }
+
+        private void monthRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadUpcomingAppointments();
+        }
+
+        private void allRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadUpcomingAppointments();
         }
     }
 }

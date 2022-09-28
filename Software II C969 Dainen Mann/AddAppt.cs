@@ -1,4 +1,5 @@
 ﻿using System;
+using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,8 @@ namespace Software_II_C969_Dainen_Mann
         }
 
         public MainForm mainFormObject;
+        
+        // EXCEPTIONS FOR CONFLICT TIMES AND OUTSIDE BUSINESS HOURS
         public static bool apptConflict(DateTime startTime, DateTime endTime)
         {
             foreach (var app in DBHelp.getAppts().Values)
@@ -43,11 +46,45 @@ namespace Software_II_C969_Dainen_Mann
             return true;
         }
 
+        private void PopulateAppointmentList()
+        {
+            apptCombo.DataSource = null;
+            List<AppointmentList> appointmentList = new List<AppointmentList>();
+            DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
+            MySqlDataReader dr = DBHelp.ExecuteReader("select appointmentId, title from appointment where start >= @CurUtcTime order by start", DBHelp.spl, DBHelp.connStr);
+            if (dr != null && dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    appointmentList.Add(new AppointmentList { AppointmentID = dr.GetInt32(0), AppointmentTitle = dr.GetString(1) });
+                }
+                apptCombo.DisplayMember = "AppointmentTitle";
+                apptCombo.ValueMember = "AppointmentId";
+                apptCombo.DataSource = appointmentList;
+            }
+            apptCombo.SelectedIndex = -1;
+        }
+        private void PopulateCustomerList()
+        {
+            comboCustList.DataSource = null;
+            List<CustomerList> customerList = new List<CustomerList>();
+            MySqlDataReader dr = DBHelp.ExecuteReader("select customerId, customerName from customer order by customerName", DBHelp.spl, DBHelp.connStr);
+            if (dr != null && dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    customerList.Add(new CustomerList(dr.GetInt32(0), dr.GetString(1)));
+                }
+                comboCustList.DisplayMember = "CustomerName";
+                comboCustList.ValueMember = "CustomerId";
+                comboCustList.DataSource = customerList;
+            }
+            comboCustList.SelectedIndex = -1;
+        }
         private void addButton_Click_1(object sender, EventArgs e)
         {
-            string timestamp = DBHelp.cTimestamp();
-            int userId = DBHelp.getUserId();
-            string username = DBHelp.getUsername();
+            int userId = DBHelp.UserID;
+            string username = DBHelp.UserName;
             DateTime startTime = startTimePicker.Value.ToUniversalTime();
             DateTime endTime = endTimePicker.Value.ToUniversalTime();
 
@@ -63,8 +100,21 @@ namespace Software_II_C969_Dainen_Mann
                             throw new apptException();
                         else
                         {
-                            DBHelp.createRec(timestamp, username, "appointment", $"'{customerIDBox.Text}', '{startTimePicker.Value.ToUniversalTime().ToString("u")}', '{endTimePicker.Value.ToUniversalTime().ToString("u")}', '{typeBox.Text}'", userId);
-                            mainFormObject.showCalendar();
+                            DBHelp.spl.Add(new MySqlParameter("@CustomerId", comboCustList.SelectedValue.ToString()));
+                            DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID.ToString()));
+                            DBHelp.spl.Add(new MySqlParameter("@Title", titleBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Description", descriptionBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Location", locationBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Contact", contactBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Type", typeBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Url", urlBox.Text));
+                            DBHelp.spl.Add(new MySqlParameter("@Start", TimeZoneInfo.ConvertTimeToUtc(startTimePicker.Value, TimeZoneInfo.Local)));
+                            DBHelp.spl.Add(new MySqlParameter("@End", TimeZoneInfo.ConvertTimeToUtc(endTimePicker.Value, TimeZoneInfo.Local)));
+                            DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
+                            DBHelp.spl.Add(new MySqlParameter("@User", DBHelp.UserName));
+                            DBHelp.ExecuteNonQuery("insert into appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                                "values (@CustomerId, @UserId, @Title, @Description, @Location, @Contact, @Type, @Url, @Start, @End, @CurUtcTime, @User, @CurUtcTime, @User)", DBHelp.spl, DBHelp.connStr);
+
                             Close();
                         }
                     }
@@ -76,7 +126,8 @@ namespace Software_II_C969_Dainen_Mann
 
         private void AddAppt_Load(object sender, EventArgs e)
         {
-
+            PopulateCustomerList();
+            PopulateAppointmentList();
         }
 
         private void endTimePicker_ValueChanged(object sender, EventArgs e)
@@ -87,6 +138,11 @@ namespace Software_II_C969_Dainen_Mann
         private void typeLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
