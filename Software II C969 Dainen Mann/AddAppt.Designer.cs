@@ -43,8 +43,8 @@ namespace Software_II_C969_Dainen_Mann
             this.titleBox = new System.Windows.Forms.TextBox();
             this.comboCustList = new System.Windows.Forms.ComboBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.locationLabel = new System.Windows.Forms.Label();
             this.contactLabel = new System.Windows.Forms.Label();
@@ -54,6 +54,7 @@ namespace Software_II_C969_Dainen_Mann
             this.urlBox = new System.Windows.Forms.TextBox();
             this.apptCombo = new System.Windows.Forms.ComboBox();
             this.apptLabel = new System.Windows.Forms.Label();
+            this.updateButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addButton
@@ -68,7 +69,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(406, 403);
+            this.closeButton.Location = new System.Drawing.Point(609, 403);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 3;
@@ -158,7 +159,7 @@ namespace Software_II_C969_Dainen_Mann
             this.titleBox.Location = new System.Drawing.Point(173, 85);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(100, 21);
-            this.titleBox.TabIndex = 13;
+            this.titleBox.TabIndex = 7;
             // 
             // comboCustList
             // 
@@ -167,7 +168,7 @@ namespace Software_II_C969_Dainen_Mann
             this.comboCustList.Location = new System.Drawing.Point(173, 38);
             this.comboCustList.Name = "comboCustList";
             this.comboCustList.Size = new System.Drawing.Size(121, 23);
-            this.comboCustList.TabIndex = 15;
+            this.comboCustList.TabIndex = 5;
             // 
             // titleLabel
             // 
@@ -178,23 +179,24 @@ namespace Software_II_C969_Dainen_Mann
             this.titleLabel.TabIndex = 16;
             this.titleLabel.Text = "Title";
             // 
-            // button1
+            // deleteButton
             // 
-            this.button1.Location = new System.Drawing.Point(188, 403);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(273, 403);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 17;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // clearButton
             // 
-            this.button2.Location = new System.Drawing.Point(301, 403);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.clearButton.Location = new System.Drawing.Point(506, 403);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 18;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // descriptionLabel
             // 
@@ -258,9 +260,11 @@ namespace Software_II_C969_Dainen_Mann
             this.apptCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.apptCombo.FormattingEnabled = true;
             this.apptCombo.Location = new System.Drawing.Point(506, 38);
+            this.apptCombo.MaxDropDownItems = 15;
             this.apptCombo.Name = "apptCombo";
             this.apptCombo.Size = new System.Drawing.Size(121, 23);
-            this.apptCombo.TabIndex = 26;
+            this.apptCombo.TabIndex = 1;
+            this.apptCombo.SelectedIndexChanged += new System.EventHandler(this.apptCombo_SelectedIndexChanged);
             // 
             // apptLabel
             // 
@@ -271,9 +275,19 @@ namespace Software_II_C969_Dainen_Mann
             this.apptLabel.TabIndex = 27;
             this.apptLabel.Text = "Appointment";
             // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(173, 403);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 28;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            // 
             // AddAppt
             // 
             this.ClientSize = new System.Drawing.Size(706, 453);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.apptLabel);
             this.Controls.Add(this.apptCombo);
             this.Controls.Add(this.urlBox);
@@ -283,8 +297,8 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.contactLabel);
             this.Controls.Add(this.locationLabel);
             this.Controls.Add(this.descriptionLabel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.comboCustList);
             this.Controls.Add(this.titleBox);
@@ -322,8 +336,8 @@ namespace Software_II_C969_Dainen_Mann
         private System.Windows.Forms.TextBox titleBox;
         private System.Windows.Forms.ComboBox comboCustList;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Label locationLabel;
         private System.Windows.Forms.Label contactLabel;
@@ -333,5 +347,6 @@ namespace Software_II_C969_Dainen_Mann
         private System.Windows.Forms.TextBox urlBox;
         private System.Windows.Forms.ComboBox apptCombo;
         private System.Windows.Forms.Label apptLabel;
+        private System.Windows.Forms.Button updateButton;
     }
 }

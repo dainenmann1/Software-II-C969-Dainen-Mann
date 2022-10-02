@@ -102,106 +102,6 @@ namespace Software_II_C969_Dainen_Mann
           
         }
 
-        public static void ReminderCheck(DataGridView apptCalendar)
-        {
-            foreach (DataGridViewRow row in apptCalendar.Rows)
-            {
-                DateTime now = DateTime.UtcNow;
-                DateTime start = DateTime.Parse(row.Cells[4].Value.ToString()).ToUniversalTime();
-                TimeSpan nowUntilStartOfApp = now - start;
-                if (nowUntilStartOfApp.TotalMinutes >= -15 && nowUntilStartOfApp.TotalMinutes < 1)
-                {
-                    MessageBox.Show($"Reminder: you have a meeting within 15 minutes. ");
-                }
-            }
-        }
-
-            static public Array updateCalendar(bool weekView)
-        {
-            MySqlConnection conn = new MySqlConnection(DBHelp.connStr);
-            conn.Open();
-            string query = $"Select customerId, type, start, end, appointmentId, userId FROM appointment WHERE userId = '{DBHelp.UserID}'";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            Dictionary<int, Hashtable> appointments = new Dictionary<int, Hashtable>();
-
-            while (reader.Read())
-            {
-                Hashtable appointment = new Hashtable();
-                appointment.Add("customerId", reader[0]);
-                appointment.Add("type", reader[1]);
-                appointment.Add("start", reader[2]);
-                appointment.Add("end", reader[3]);
-                appointments.Add(Convert.ToInt32(reader[4]), appointment);
-                appointment.Add("userId", reader[5]);
-            }
-            reader.Close();
-
-            foreach (var app in appointments.Values)
-            {
-                query = $"SELECT userName FROM user WHERE userId = '{app["userId"]}'";
-                cmd = new MySqlCommand(query, conn);
-                reader = cmd.ExecuteReader();
-                reader.Read();
-                app.Add("userName", reader[0]);
-                reader.Close();
-            }
-
-            foreach (var app in appointments.Values)
-            {
-                query = $"SELECT customerName FROM customer WHERE customerId = '{app["customerId"]}'";
-                cmd = new MySqlCommand(query, conn);
-                reader = cmd.ExecuteReader();
-                reader.Read();
-                app.Add("customerName", reader[0]);
-                reader.Close();
-            }
-
-            Dictionary<int, Hashtable> parsedAppointments = new Dictionary<int, Hashtable>();
-            foreach (var app in appointments)
-            {
-                DateTime startTime = DateTime.Parse(app.Value["start"].ToString());
-                DateTime endTime = DateTime.Parse(app.Value["end"].ToString());
-                DateTime today = DateTime.UtcNow;
-
-                if (weekView)
-                {
-                    DateTime sunday = today.AddDays(-(int)today.DayOfWeek);
-                    DateTime saturday = today.AddDays(-(int)today.DayOfWeek + (int)DayOfWeek.Saturday);
-
-                    if (startTime >= sunday && endTime < saturday)
-                    {
-                        parsedAppointments.Add(app.Key, app.Value);
-                    }
-                }
-                else
-                {
-                    DateTime firstDayOfMonth = new DateTime(today.Year, today.Month, 1);
-                    DateTime lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-                    if (startTime >= firstDayOfMonth && endTime < lastDayOfMonth)
-                    {
-                        parsedAppointments.Add(app.Key, app.Value);
-                    }
-                }
-            }
-
-            DBHelp.setAppts(appointments);
-            var appointmentArray = from row in parsedAppointments
-                      select new
-                     {
-                      ID = row.Key,
-                      Type = row.Value["type"],
-                      StartTime = DBHelp.ConvertToTimezone(row.Value["start"].ToString()),
-                      EndTime = DBHelp.ConvertToTimezone(row.Value["end"].ToString()),
-                       Customer = row.Value["customerName"]
-                     };
-
-            conn.Close();
-
-            return appointmentArray.ToArray();
-        }
-
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -239,6 +139,7 @@ namespace Software_II_C969_Dainen_Mann
             AddAppt addAppt = new AddAppt();
             addAppt.mainFormObject = this;
             addAppt.Show();
+            LoadUpcomingAppointments();
         }
 
         private void monthRadio_CheckedChanged(object sender, EventArgs e)

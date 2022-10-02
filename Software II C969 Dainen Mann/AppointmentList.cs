@@ -8,7 +8,7 @@ namespace Software_II_C969_Dainen_Mann
 {
     public class AppointmentList
     {
-        public int AppointmentID { get; set; }
+        public int AppointmentId { get; set; }
         public string AppointmentTitle { get; set; }
     }
 }
