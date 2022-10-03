@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace Software_II_C969_Dainen_Mann
 {
-    class DBHelp
+    static class DBHelp
     {
         //VARIABLES
         public static string connStr = "Host=localhost;Port=3306;Database=client_schedule;Username=sqlUser;Password=Passw0rd!";

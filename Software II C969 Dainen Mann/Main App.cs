@@ -123,9 +123,13 @@ namespace Software_II_C969_Dainen_Mann
             LoadUpcomingAppointments();
         }
 
+        //Add Customer Button
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AddCustomer addCust = new AddCustomer();
+            addCust.mainFormObject = this;
+            addCust.Show();
+            LoadUpcomingAppointments();
         }
 
         private void weekRadio_CheckedChanged(object sender, EventArgs e)

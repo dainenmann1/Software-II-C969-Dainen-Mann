@@ -225,6 +225,11 @@ namespace Software_II_C969_Dainen_Mann
                 AddorUpdate();
             }
         }
+
+        private void descriptionBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

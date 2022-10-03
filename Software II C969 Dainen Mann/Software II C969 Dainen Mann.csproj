@@ -126,6 +126,7 @@
     <Compile Include="Appointment.cs" />
     <Compile Include="AppointmentList.cs" />
     <Compile Include="apptException.cs" />
+    <Compile Include="CountryList.cs" />
     <Compile Include="CustomerList.cs" />
     <Compile Include="DBHelp.cs" />
     <Compile Include="Logger.cs" />

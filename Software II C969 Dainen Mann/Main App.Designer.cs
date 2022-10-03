@@ -30,7 +30,7 @@ namespace Software_II_C969_Dainen_Mann
 		private void InitializeComponent()
 		{
             this.addApptButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.customerButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.usernameText = new System.Windows.Forms.Label();
@@ -47,19 +47,19 @@ namespace Software_II_C969_Dainen_Mann
             this.addApptButton.Name = "addApptButton";
             this.addApptButton.Size = new System.Drawing.Size(109, 27);
             this.addApptButton.TabIndex = 0;
-            this.addApptButton.Text = "Add Appointment";
+            this.addApptButton.Text = "Appointments";
             this.addApptButton.UseVisualStyleBackColor = true;
             this.addApptButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // customerButton
             // 
-            this.button2.Location = new System.Drawing.Point(146, 620);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 27);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.customerButton.Location = new System.Drawing.Point(146, 620);
+            this.customerButton.Name = "customerButton";
+            this.customerButton.Size = new System.Drawing.Size(87, 27);
+            this.customerButton.TabIndex = 1;
+            this.customerButton.Text = "Customers";
+            this.customerButton.UseVisualStyleBackColor = true;
+            this.customerButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -157,7 +157,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.usernameText);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.customerButton);
             this.Controls.Add(this.addApptButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainForm";
@@ -171,7 +171,7 @@ namespace Software_II_C969_Dainen_Mann
         #endregion
 
         private System.Windows.Forms.Button addApptButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button customerButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label usernameText;
