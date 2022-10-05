@@ -58,6 +58,20 @@ namespace Software_II_C969_Dainen_Mann
 
         }
 
+        private bool CheckFieldsForError()
+        {
+            bool isValid = true;
+            string errorMessage = "";
+            if (string.IsNullOrEmpty(countryComboBox.Text)) { isValid = false; errorMessage += "Country field cannot be blank." + Environment.NewLine; }
+            if (string.IsNullOrEmpty(nameBox.Text)) { isValid = false; errorMessage += "Name field cannot be blank." + Environment.NewLine; }
+            if (string.IsNullOrEmpty(address1Box.Text)) { isValid = false; errorMessage += "Address field cannot be blank." + Environment.NewLine; }
+            if (string.IsNullOrEmpty(cityComboBox.Text)) { isValid = false; errorMessage += "City field cannot be blank." + Environment.NewLine; }
+            if (string.IsNullOrEmpty(zipCodeBox.Text)) { isValid = false; errorMessage += "Postal Code field cannot be blank." + Environment.NewLine; }
+            if (string.IsNullOrEmpty(phoneNumBox.Text)) { isValid = false; errorMessage += "Phone field cannot be blank."; }
+            if (!string.IsNullOrEmpty(errorMessage)) { MessageBox.Show(errorMessage); }
+            return isValid;
+        }
+
         //COUNTRY METHODS
         private string CountryData()
         {
@@ -285,6 +299,35 @@ namespace Software_II_C969_Dainen_Mann
             customerComboBox.SelectedIndex = -1;
             AddorUpdate();
             ClearForm();
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Add this customer to the list?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (CheckFieldsForError())
+                    {
+                        string countryId = CountryData();
+                        string cityId = CityData(countryId);
+                        string addressId = AddressData(cityId);
+
+                        DBHelp.spl.Add(new MySqlParameter("@CustomerName", nameBox.Text));
+                        DBHelp.spl.Add(new MySqlParameter("@AddressId", addressId));
+                        DBHelp.spl.Add(new MySqlParameter("@Active", activeCheckBox.Checked));
+                        DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
+                        DBHelp.spl.Add(new MySqlParameter("@User", DBHelp.UserName));
+                        DBHelp.ExecuteNonQuery("insert into customer (customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy) values (@CustomerName, @AddressId, @Active, @CurUtcTime, @User, @CurUtcTime, @User)", DBHelp.spl, DBHelp.connStr);
+
+                        PopulateCustomerList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem saving customer data." + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
     }
 }

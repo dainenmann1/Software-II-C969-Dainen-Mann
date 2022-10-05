@@ -18,8 +18,6 @@ namespace Software_II_C969_Dainen_Mann
 		public Login()
 		{
 			InitializeComponent();
-
-			correctLang();
 		}
 
 		public string errorMessage = "The username and password did not match. Please try again";
@@ -76,10 +74,6 @@ namespace Software_II_C969_Dainen_Mann
 			}
 			return 0;
 		}
-		private void userLabel_Click(object sender, EventArgs e)
-		{
-
-		}
 
 		private void loginButton_Click(object sender, EventArgs e)
 		{
@@ -103,8 +97,8 @@ namespace Software_II_C969_Dainen_Mann
 
         private void Login_Load(object sender, EventArgs e)
         {
-
-        }
+			correctLang();
+		}
 
         private void cancelButton_Click(object sender, EventArgs e)
         {

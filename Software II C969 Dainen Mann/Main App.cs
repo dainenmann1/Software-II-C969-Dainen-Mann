@@ -20,12 +20,26 @@ namespace Software_II_C969_Dainen_Mann
 		public MainForm()
 		{
 			InitializeComponent();
+            NotifyUpcomingAppts();
             MainForm_Load(allRadio.Checked = true);
         }
 
-        public static string SetApptID = "";
-        public static string SetCustName = "";
+        private void NotifyUpcomingAppts()
+        {
+            if (DBHelp.appointmentList.Count > 0)
+            {
+                try
+                {
+                    //Lambda expression here to simplify the process of finding the earliest start of future appointments
+                    Appointment upcomingAppointment = DBHelp.appointmentList.Where(s => s.Start.AddMinutes(-15) <= DateTime.Now).Where(s => s.Start > DateTime.Now).OrderBy(s => s.Start).First();
+                    if (upcomingAppointment != null) { MessageBox.Show("Upcoming meeting with " + upcomingAppointment.CustomerName + " starting in " + Math.Ceiling(upcomingAppointment.Start.Subtract(DateTime.Now).TotalSeconds / 60.0).ToString() + " minutes."); }
+                }
+                catch
+                {
 
+                }
+            }
+        }
         private void PopulateAppointmentList()
         {
             apptFlowPanel.Controls.Clear();
@@ -108,14 +122,15 @@ namespace Software_II_C969_Dainen_Mann
 
         }
 
+        //Refresh Button
         private void button4_Click(object sender, EventArgs e)
         {
-
+            LoadUpcomingAppointments();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

@@ -45,7 +45,6 @@ namespace Software_II_C969_Dainen_Mann
             this.userLabel.Size = new System.Drawing.Size(65, 15);
             this.userLabel.TabIndex = 0;
             this.userLabel.Text = "Username";
-            this.userLabel.Click += new System.EventHandler(this.userLabel_Click);
             // 
             // pwLabel
             // 

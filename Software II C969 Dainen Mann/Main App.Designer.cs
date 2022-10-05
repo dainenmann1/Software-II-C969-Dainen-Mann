@@ -31,21 +31,21 @@ namespace Software_II_C969_Dainen_Mann
 		{
             this.addApptButton = new System.Windows.Forms.Button();
             this.customerButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.usernameText = new System.Windows.Forms.Label();
-            this.closeButton = new System.Windows.Forms.Button();
+            this.reportButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.weekRadio = new System.Windows.Forms.RadioButton();
             this.monthRadio = new System.Windows.Forms.RadioButton();
             this.allRadio = new System.Windows.Forms.RadioButton();
             this.apptFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.sortbyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // addApptButton
             // 
-            this.addApptButton.Location = new System.Drawing.Point(12, 620);
+            this.addApptButton.Location = new System.Drawing.Point(22, 705);
             this.addApptButton.Name = "addApptButton";
-            this.addApptButton.Size = new System.Drawing.Size(109, 27);
+            this.addApptButton.Size = new System.Drawing.Size(150, 27);
             this.addApptButton.TabIndex = 0;
             this.addApptButton.Text = "Appointments";
             this.addApptButton.UseVisualStyleBackColor = true;
@@ -53,59 +53,49 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // customerButton
             // 
-            this.customerButton.Location = new System.Drawing.Point(146, 620);
+            this.customerButton.Location = new System.Drawing.Point(204, 705);
             this.customerButton.Name = "customerButton";
-            this.customerButton.Size = new System.Drawing.Size(87, 27);
+            this.customerButton.Size = new System.Drawing.Size(120, 27);
             this.customerButton.TabIndex = 1;
             this.customerButton.Text = "Customers";
             this.customerButton.UseVisualStyleBackColor = true;
             this.customerButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // reportButton
             // 
-            this.button3.Location = new System.Drawing.Point(257, 620);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 27);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.reportButton.Location = new System.Drawing.Point(368, 706);
+            this.reportButton.Name = "reportButton";
+            this.reportButton.Size = new System.Drawing.Size(120, 27);
+            this.reportButton.TabIndex = 2;
+            this.reportButton.Text = "Reports";
+            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // refreshButton
             // 
-            this.button4.Location = new System.Drawing.Point(374, 620);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 27);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.refreshButton.Location = new System.Drawing.Point(532, 705);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(120, 27);
+            this.refreshButton.TabIndex = 3;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // usernameText
+            // logoutButton
             // 
-            this.usernameText.AutoSize = true;
-            this.usernameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameText.Location = new System.Drawing.Point(1087, 9);
-            this.usernameText.Name = "usernameText";
-            this.usernameText.Size = new System.Drawing.Size(77, 18);
-            this.usernameText.TabIndex = 4;
-            this.usernameText.Text = "Username";
-            // 
-            // closeButton
-            // 
-            this.closeButton.Location = new System.Drawing.Point(1118, 617);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(100, 30);
-            this.closeButton.TabIndex = 5;
-            this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.logoutButton.Location = new System.Drawing.Point(1090, 703);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(100, 30);
+            this.logoutButton.TabIndex = 5;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // weekRadio
             // 
             this.weekRadio.AutoSize = true;
             this.weekRadio.Checked = true;
-            this.weekRadio.Location = new System.Drawing.Point(65, 9);
+            this.weekRadio.Location = new System.Drawing.Point(122, 39);
             this.weekRadio.Name = "weekRadio";
             this.weekRadio.Size = new System.Drawing.Size(56, 19);
             this.weekRadio.TabIndex = 7;
@@ -117,7 +107,7 @@ namespace Software_II_C969_Dainen_Mann
             // monthRadio
             // 
             this.monthRadio.AutoSize = true;
-            this.monthRadio.Location = new System.Drawing.Point(146, 8);
+            this.monthRadio.Location = new System.Drawing.Point(222, 39);
             this.monthRadio.Name = "monthRadio";
             this.monthRadio.Size = new System.Drawing.Size(60, 19);
             this.monthRadio.TabIndex = 8;
@@ -128,7 +118,7 @@ namespace Software_II_C969_Dainen_Mann
             // allRadio
             // 
             this.allRadio.AutoSize = true;
-            this.allRadio.Location = new System.Drawing.Point(12, 8);
+            this.allRadio.Location = new System.Drawing.Point(22, 39);
             this.allRadio.Name = "allRadio";
             this.allRadio.Size = new System.Drawing.Size(38, 19);
             this.allRadio.TabIndex = 9;
@@ -139,24 +129,33 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // apptFlowPanel
             // 
-            this.apptFlowPanel.Location = new System.Drawing.Point(22, 50);
+            this.apptFlowPanel.Location = new System.Drawing.Point(22, 64);
             this.apptFlowPanel.Name = "apptFlowPanel";
-            this.apptFlowPanel.Size = new System.Drawing.Size(1142, 547);
+            this.apptFlowPanel.Size = new System.Drawing.Size(1168, 586);
             this.apptFlowPanel.TabIndex = 10;
+            // 
+            // sortbyLabel
+            // 
+            this.sortbyLabel.AutoSize = true;
+            this.sortbyLabel.Location = new System.Drawing.Point(19, 9);
+            this.sortbyLabel.Name = "sortbyLabel";
+            this.sortbyLabel.Size = new System.Drawing.Size(45, 15);
+            this.sortbyLabel.TabIndex = 11;
+            this.sortbyLabel.Text = "Sort By";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 659);
+            this.ClientSize = new System.Drawing.Size(1230, 761);
+            this.Controls.Add(this.sortbyLabel);
             this.Controls.Add(this.apptFlowPanel);
             this.Controls.Add(this.allRadio);
             this.Controls.Add(this.monthRadio);
             this.Controls.Add(this.weekRadio);
-            this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.usernameText);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.logoutButton);
+            this.Controls.Add(this.refreshButton);
+            this.Controls.Add(this.reportButton);
             this.Controls.Add(this.customerButton);
             this.Controls.Add(this.addApptButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -172,14 +171,14 @@ namespace Software_II_C969_Dainen_Mann
 
         private System.Windows.Forms.Button addApptButton;
         private System.Windows.Forms.Button customerButton;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label usernameText;
-        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button reportButton;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.RadioButton weekRadio;
         private System.Windows.Forms.RadioButton monthRadio;
         private System.Windows.Forms.RadioButton allRadio;
         private System.Windows.Forms.FlowLayoutPanel apptFlowPanel;
+        private System.Windows.Forms.Label sortbyLabel;
     }
 }
 

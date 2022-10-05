@@ -60,7 +60,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(157, 403);
+            this.addButton.Location = new System.Drawing.Point(126, 440);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // closeButton
             // 
-            this.closeButton.Location = new System.Drawing.Point(609, 403);
+            this.closeButton.Location = new System.Drawing.Point(597, 440);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
             this.closeButton.TabIndex = 3;
@@ -90,7 +90,7 @@ namespace Software_II_C969_Dainen_Mann
             // customerIDLabel
             // 
             this.customerIDLabel.AutoSize = true;
-            this.customerIDLabel.Location = new System.Drawing.Point(71, 54);
+            this.customerIDLabel.Location = new System.Drawing.Point(71, 98);
             this.customerIDLabel.Name = "customerIDLabel";
             this.customerIDLabel.Size = new System.Drawing.Size(60, 15);
             this.customerIDLabel.TabIndex = 5;
@@ -99,7 +99,7 @@ namespace Software_II_C969_Dainen_Mann
             // typeLabel
             // 
             this.typeLabel.AutoSize = true;
-            this.typeLabel.Location = new System.Drawing.Point(12, 253);
+            this.typeLabel.Location = new System.Drawing.Point(40, 309);
             this.typeLabel.Name = "typeLabel";
             this.typeLabel.Size = new System.Drawing.Size(33, 15);
             this.typeLabel.TabIndex = 6;
@@ -108,7 +108,7 @@ namespace Software_II_C969_Dainen_Mann
             // startTimeLabel
             // 
             this.startTimeLabel.AutoSize = true;
-            this.startTimeLabel.Location = new System.Drawing.Point(71, 297);
+            this.startTimeLabel.Location = new System.Drawing.Point(68, 352);
             this.startTimeLabel.Name = "startTimeLabel";
             this.startTimeLabel.Size = new System.Drawing.Size(63, 15);
             this.startTimeLabel.TabIndex = 7;
@@ -117,23 +117,23 @@ namespace Software_II_C969_Dainen_Mann
             // endTimeLabel
             // 
             this.endTimeLabel.AutoSize = true;
-            this.endTimeLabel.Location = new System.Drawing.Point(71, 340);
+            this.endTimeLabel.Location = new System.Drawing.Point(71, 399);
             this.endTimeLabel.Name = "endTimeLabel";
             this.endTimeLabel.Size = new System.Drawing.Size(60, 15);
             this.endTimeLabel.TabIndex = 8;
             this.endTimeLabel.Text = "End Time";
+            this.endTimeLabel.Click += new System.EventHandler(this.endTimeLabel_Click);
             // 
             // descriptionBox
             // 
-            this.descriptionBox.Location = new System.Drawing.Point(173, 129);
+            this.descriptionBox.Location = new System.Drawing.Point(173, 172);
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(100, 21);
             this.descriptionBox.TabIndex = 9;
-            this.descriptionBox.TextChanged += new System.EventHandler(this.descriptionBox_TextChanged);
             // 
             // typeBox
             // 
-            this.typeBox.Location = new System.Drawing.Point(71, 253);
+            this.typeBox.Location = new System.Drawing.Point(101, 303);
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(100, 21);
             this.typeBox.TabIndex = 10;
@@ -142,7 +142,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.startTimePicker.CustomFormat = "yyyy/MM/dd HH:mm";
             this.startTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startTimePicker.Location = new System.Drawing.Point(173, 297);
+            this.startTimePicker.Location = new System.Drawing.Point(173, 346);
             this.startTimePicker.Name = "startTimePicker";
             this.startTimePicker.Size = new System.Drawing.Size(234, 21);
             this.startTimePicker.TabIndex = 11;
@@ -151,14 +151,14 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.endTimePicker.CustomFormat = "yyyy/MM/dd HH:mm";
             this.endTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endTimePicker.Location = new System.Drawing.Point(173, 340);
+            this.endTimePicker.Location = new System.Drawing.Point(173, 393);
             this.endTimePicker.Name = "endTimePicker";
             this.endTimePicker.Size = new System.Drawing.Size(234, 21);
             this.endTimePicker.TabIndex = 12;
             // 
             // titleBox
             // 
-            this.titleBox.Location = new System.Drawing.Point(173, 91);
+            this.titleBox.Location = new System.Drawing.Point(173, 132);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(100, 21);
             this.titleBox.TabIndex = 7;
@@ -167,7 +167,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.comboCustList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboCustList.FormattingEnabled = true;
-            this.comboCustList.Location = new System.Drawing.Point(173, 51);
+            this.comboCustList.Location = new System.Drawing.Point(173, 90);
             this.comboCustList.Name = "comboCustList";
             this.comboCustList.Size = new System.Drawing.Size(121, 23);
             this.comboCustList.TabIndex = 5;
@@ -175,7 +175,7 @@ namespace Software_II_C969_Dainen_Mann
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(71, 94);
+            this.titleLabel.Location = new System.Drawing.Point(71, 138);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(30, 15);
             this.titleLabel.TabIndex = 16;
@@ -183,16 +183,17 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(397, 403);
+            this.deleteButton.Location = new System.Drawing.Point(397, 440);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 17;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // clearButton
             // 
-            this.clearButton.Location = new System.Drawing.Point(506, 403);
+            this.clearButton.Location = new System.Drawing.Point(497, 440);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
             this.clearButton.TabIndex = 18;
@@ -203,7 +204,7 @@ namespace Software_II_C969_Dainen_Mann
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(71, 132);
+            this.descriptionLabel.Location = new System.Drawing.Point(71, 178);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(69, 15);
             this.descriptionLabel.TabIndex = 19;
@@ -212,7 +213,7 @@ namespace Software_II_C969_Dainen_Mann
             // locationLabel
             // 
             this.locationLabel.AutoSize = true;
-            this.locationLabel.Location = new System.Drawing.Point(71, 168);
+            this.locationLabel.Location = new System.Drawing.Point(71, 220);
             this.locationLabel.Name = "locationLabel";
             this.locationLabel.Size = new System.Drawing.Size(54, 15);
             this.locationLabel.TabIndex = 20;
@@ -221,7 +222,7 @@ namespace Software_II_C969_Dainen_Mann
             // contactLabel
             // 
             this.contactLabel.AutoSize = true;
-            this.contactLabel.Location = new System.Drawing.Point(71, 211);
+            this.contactLabel.Location = new System.Drawing.Point(68, 264);
             this.contactLabel.Name = "contactLabel";
             this.contactLabel.Size = new System.Drawing.Size(48, 15);
             this.contactLabel.TabIndex = 21;
@@ -229,14 +230,14 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // locationBox
             // 
-            this.locationBox.Location = new System.Drawing.Point(173, 168);
+            this.locationBox.Location = new System.Drawing.Point(173, 214);
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(100, 21);
             this.locationBox.TabIndex = 22;
             // 
             // contactBox
             // 
-            this.contactBox.Location = new System.Drawing.Point(173, 211);
+            this.contactBox.Location = new System.Drawing.Point(173, 258);
             this.contactBox.Name = "contactBox";
             this.contactBox.Size = new System.Drawing.Size(100, 21);
             this.contactBox.TabIndex = 23;
@@ -244,7 +245,7 @@ namespace Software_II_C969_Dainen_Mann
             // urlLabel
             // 
             this.urlLabel.AutoSize = true;
-            this.urlLabel.Location = new System.Drawing.Point(200, 253);
+            this.urlLabel.Location = new System.Drawing.Point(223, 309);
             this.urlLabel.Name = "urlLabel";
             this.urlLabel.Size = new System.Drawing.Size(32, 15);
             this.urlLabel.TabIndex = 24;
@@ -252,7 +253,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // urlBox
             // 
-            this.urlBox.Location = new System.Drawing.Point(253, 253);
+            this.urlBox.Location = new System.Drawing.Point(276, 303);
             this.urlBox.Name = "urlBox";
             this.urlBox.Size = new System.Drawing.Size(154, 21);
             this.urlBox.TabIndex = 25;
@@ -261,7 +262,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.apptCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.apptCombo.FormattingEnabled = true;
-            this.apptCombo.Location = new System.Drawing.Point(351, 12);
+            this.apptCombo.Location = new System.Drawing.Point(173, 46);
             this.apptCombo.MaxDropDownItems = 15;
             this.apptCombo.Name = "apptCombo";
             this.apptCombo.Size = new System.Drawing.Size(121, 23);
@@ -271,7 +272,7 @@ namespace Software_II_C969_Dainen_Mann
             // apptLabel
             // 
             this.apptLabel.AutoSize = true;
-            this.apptLabel.Location = new System.Drawing.Point(250, 15);
+            this.apptLabel.Location = new System.Drawing.Point(71, 54);
             this.apptLabel.Name = "apptLabel";
             this.apptLabel.Size = new System.Drawing.Size(76, 15);
             this.apptLabel.TabIndex = 27;
@@ -279,25 +280,27 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(263, 403);
+            this.updateButton.Location = new System.Drawing.Point(226, 440);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 28;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // newButton
             // 
-            this.newButton.Location = new System.Drawing.Point(56, 403);
+            this.newButton.Location = new System.Drawing.Point(26, 440);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
             this.newButton.TabIndex = 29;
             this.newButton.Text = "New";
             this.newButton.UseVisualStyleBackColor = true;
+            this.newButton.Click += new System.EventHandler(this.newButton_Click);
             // 
             // AddAppt
             // 
-            this.ClientSize = new System.Drawing.Size(706, 453);
+            this.ClientSize = new System.Drawing.Size(690, 490);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.apptLabel);
