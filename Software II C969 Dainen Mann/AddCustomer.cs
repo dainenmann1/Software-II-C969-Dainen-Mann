@@ -329,5 +329,59 @@ namespace Software_II_C969_Dainen_Mann
                 MessageBox.Show("Problem saving customer data." + Environment.NewLine + Environment.NewLine + ex.Message);
             }
         }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (customerComboBox.SelectedIndex > -1)
+                {
+                    if (MessageBox.Show("Delete this from customer list?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        DBHelp.spl.Add(new MySqlParameter("@CustomerId", customerComboBox.SelectedValue.ToString()));
+                        DBHelp.ExecuteNonQuery("delete from appointment where customerId = @CustomerId", DBHelp.spl, DBHelp.connStr);
+
+                        DBHelp.spl.Add(new MySqlParameter("@CustomerId", customerComboBox.SelectedValue.ToString()));
+                        DBHelp.ExecuteNonQuery("delete from customer where customerId = @CustomerId", DBHelp.spl, DBHelp.connStr);
+
+                        PopulateCustomerList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem deleting customer data." + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Make changes to this customer?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    if (CheckFieldsForError())
+                    {
+                        string countryId = CountryData();
+                        string cityId = CityData(countryId);
+                        string addressId = AddressData(cityId);
+
+                        DBHelp.spl.Add(new MySqlParameter("@CustomerId", customerComboBox.SelectedValue.ToString()));
+                        DBHelp.spl.Add(new MySqlParameter("@CustomerName", nameBox.Text));
+                        DBHelp.spl.Add(new MySqlParameter("@AddressId", addressId));
+                        DBHelp.spl.Add(new MySqlParameter("@Active", activeCheckBox.Checked));
+                        DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
+                        DBHelp.spl.Add(new MySqlParameter("@User", DBHelp.UserName));
+                        DBHelp.ExecuteNonQuery("update customer set customerName = @CustomerName, addressId = @addressId, active = @Active, lastUpdate = @CurUtcTime, lastUpdateBy = @User where customerId = @CustomerId", DBHelp.spl, DBHelp.connStr);
+
+                        PopulateCustomerList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem updating customer data." + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+        }
     }
 }

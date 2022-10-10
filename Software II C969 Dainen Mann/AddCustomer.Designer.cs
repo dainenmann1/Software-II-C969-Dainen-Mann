@@ -61,7 +61,7 @@ namespace Software_II_C969_Dainen_Mann
             this.customerComboBox.Location = new System.Drawing.Point(124, 44);
             this.customerComboBox.Name = "customerComboBox";
             this.customerComboBox.Size = new System.Drawing.Size(140, 23);
-            this.customerComboBox.TabIndex = 0;
+            this.customerComboBox.TabIndex = 1;
             this.customerComboBox.SelectedIndexChanged += new System.EventHandler(this.customerComboBox_SelectedIndexChanged);
             // 
             // cityComboBox
@@ -70,7 +70,7 @@ namespace Software_II_C969_Dainen_Mann
             this.cityComboBox.Location = new System.Drawing.Point(124, 244);
             this.cityComboBox.Name = "cityComboBox";
             this.cityComboBox.Size = new System.Drawing.Size(140, 23);
-            this.cityComboBox.TabIndex = 1;
+            this.cityComboBox.TabIndex = 6;
             // 
             // customerListLabel
             // 
@@ -95,7 +95,7 @@ namespace Software_II_C969_Dainen_Mann
             this.addButton.Location = new System.Drawing.Point(137, 404);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(87, 27);
-            this.addButton.TabIndex = 4;
+            this.addButton.TabIndex = 11;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -106,17 +106,18 @@ namespace Software_II_C969_Dainen_Mann
             this.updateButton.Location = new System.Drawing.Point(239, 404);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(87, 27);
-            this.updateButton.TabIndex = 5;
+            this.updateButton.TabIndex = 12;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Visible = false;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // clearButton
             // 
             this.clearButton.Location = new System.Drawing.Point(366, 404);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(87, 27);
-            this.clearButton.TabIndex = 6;
+            this.clearButton.TabIndex = 13;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -126,16 +127,17 @@ namespace Software_II_C969_Dainen_Mann
             this.deleteButton.Location = new System.Drawing.Point(469, 404);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(87, 27);
-            this.deleteButton.TabIndex = 7;
+            this.deleteButton.TabIndex = 14;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(568, 404);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(87, 27);
-            this.closeButton.TabIndex = 8;
+            this.closeButton.TabIndex = 15;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -145,7 +147,7 @@ namespace Software_II_C969_Dainen_Mann
             this.newButton.Location = new System.Drawing.Point(32, 404);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(87, 27);
-            this.newButton.TabIndex = 9;
+            this.newButton.TabIndex = 10;
             this.newButton.Text = "New";
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);
@@ -156,7 +158,7 @@ namespace Software_II_C969_Dainen_Mann
             this.activeCheckBox.Location = new System.Drawing.Point(124, 369);
             this.activeCheckBox.Name = "activeCheckBox";
             this.activeCheckBox.Size = new System.Drawing.Size(57, 19);
-            this.activeCheckBox.TabIndex = 10;
+            this.activeCheckBox.TabIndex = 9;
             this.activeCheckBox.Text = "Active";
             this.activeCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -166,7 +168,7 @@ namespace Software_II_C969_Dainen_Mann
             this.countryComboBox.Location = new System.Drawing.Point(124, 200);
             this.countryComboBox.Name = "countryComboBox";
             this.countryComboBox.Size = new System.Drawing.Size(140, 23);
-            this.countryComboBox.TabIndex = 11;
+            this.countryComboBox.TabIndex = 5;
             this.countryComboBox.Leave += new System.EventHandler(this.countryComboBox_Leave);
             // 
             // cityLabel
@@ -183,14 +185,14 @@ namespace Software_II_C969_Dainen_Mann
             this.address1Box.Location = new System.Drawing.Point(124, 132);
             this.address1Box.Name = "address1Box";
             this.address1Box.Size = new System.Drawing.Size(271, 21);
-            this.address1Box.TabIndex = 13;
+            this.address1Box.TabIndex = 3;
             // 
             // address2Box
             // 
             this.address2Box.Location = new System.Drawing.Point(124, 159);
             this.address2Box.Name = "address2Box";
             this.address2Box.Size = new System.Drawing.Size(271, 21);
-            this.address2Box.TabIndex = 14;
+            this.address2Box.TabIndex = 4;
             // 
             // address1Label
             // 
@@ -224,14 +226,14 @@ namespace Software_II_C969_Dainen_Mann
             this.zipCodeBox.Location = new System.Drawing.Point(124, 290);
             this.zipCodeBox.Name = "zipCodeBox";
             this.zipCodeBox.Size = new System.Drawing.Size(100, 21);
-            this.zipCodeBox.TabIndex = 18;
+            this.zipCodeBox.TabIndex = 7;
             // 
             // phoneNumBox
             // 
             this.phoneNumBox.Location = new System.Drawing.Point(124, 331);
             this.phoneNumBox.Name = "phoneNumBox";
             this.phoneNumBox.Size = new System.Drawing.Size(140, 21);
-            this.phoneNumBox.TabIndex = 19;
+            this.phoneNumBox.TabIndex = 8;
             // 
             // phoneLabel
             // 
@@ -247,7 +249,7 @@ namespace Software_II_C969_Dainen_Mann
             this.nameBox.Location = new System.Drawing.Point(124, 90);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(140, 21);
-            this.nameBox.TabIndex = 21;
+            this.nameBox.TabIndex = 2;
             // 
             // nameLabel
             // 

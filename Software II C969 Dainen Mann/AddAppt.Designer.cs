@@ -63,7 +63,7 @@ namespace Software_II_C969_Dainen_Mann
             this.addButton.Location = new System.Drawing.Point(126, 440);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 2;
+            this.addButton.TabIndex = 12;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click_1);
@@ -73,7 +73,7 @@ namespace Software_II_C969_Dainen_Mann
             this.closeButton.Location = new System.Drawing.Point(597, 440);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
-            this.closeButton.TabIndex = 3;
+            this.closeButton.TabIndex = 16;
             this.closeButton.Text = "Close";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -129,14 +129,14 @@ namespace Software_II_C969_Dainen_Mann
             this.descriptionBox.Location = new System.Drawing.Point(173, 172);
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(100, 21);
-            this.descriptionBox.TabIndex = 9;
+            this.descriptionBox.TabIndex = 4;
             // 
             // typeBox
             // 
             this.typeBox.Location = new System.Drawing.Point(101, 303);
             this.typeBox.Name = "typeBox";
             this.typeBox.Size = new System.Drawing.Size(100, 21);
-            this.typeBox.TabIndex = 10;
+            this.typeBox.TabIndex = 7;
             // 
             // startTimePicker
             // 
@@ -145,7 +145,7 @@ namespace Software_II_C969_Dainen_Mann
             this.startTimePicker.Location = new System.Drawing.Point(173, 346);
             this.startTimePicker.Name = "startTimePicker";
             this.startTimePicker.Size = new System.Drawing.Size(234, 21);
-            this.startTimePicker.TabIndex = 11;
+            this.startTimePicker.TabIndex = 9;
             // 
             // endTimePicker
             // 
@@ -154,14 +154,14 @@ namespace Software_II_C969_Dainen_Mann
             this.endTimePicker.Location = new System.Drawing.Point(173, 393);
             this.endTimePicker.Name = "endTimePicker";
             this.endTimePicker.Size = new System.Drawing.Size(234, 21);
-            this.endTimePicker.TabIndex = 12;
+            this.endTimePicker.TabIndex = 10;
             // 
             // titleBox
             // 
             this.titleBox.Location = new System.Drawing.Point(173, 132);
             this.titleBox.Name = "titleBox";
             this.titleBox.Size = new System.Drawing.Size(100, 21);
-            this.titleBox.TabIndex = 7;
+            this.titleBox.TabIndex = 3;
             // 
             // comboCustList
             // 
@@ -170,7 +170,7 @@ namespace Software_II_C969_Dainen_Mann
             this.comboCustList.Location = new System.Drawing.Point(173, 90);
             this.comboCustList.Name = "comboCustList";
             this.comboCustList.Size = new System.Drawing.Size(121, 23);
-            this.comboCustList.TabIndex = 5;
+            this.comboCustList.TabIndex = 2;
             // 
             // titleLabel
             // 
@@ -186,7 +186,7 @@ namespace Software_II_C969_Dainen_Mann
             this.deleteButton.Location = new System.Drawing.Point(397, 440);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 17;
+            this.deleteButton.TabIndex = 14;
             this.deleteButton.Text = "Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
@@ -196,7 +196,7 @@ namespace Software_II_C969_Dainen_Mann
             this.clearButton.Location = new System.Drawing.Point(497, 440);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 18;
+            this.clearButton.TabIndex = 15;
             this.clearButton.Text = "Clear";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
@@ -233,14 +233,14 @@ namespace Software_II_C969_Dainen_Mann
             this.locationBox.Location = new System.Drawing.Point(173, 214);
             this.locationBox.Name = "locationBox";
             this.locationBox.Size = new System.Drawing.Size(100, 21);
-            this.locationBox.TabIndex = 22;
+            this.locationBox.TabIndex = 5;
             // 
             // contactBox
             // 
             this.contactBox.Location = new System.Drawing.Point(173, 258);
             this.contactBox.Name = "contactBox";
             this.contactBox.Size = new System.Drawing.Size(100, 21);
-            this.contactBox.TabIndex = 23;
+            this.contactBox.TabIndex = 6;
             // 
             // urlLabel
             // 
@@ -256,7 +256,7 @@ namespace Software_II_C969_Dainen_Mann
             this.urlBox.Location = new System.Drawing.Point(276, 303);
             this.urlBox.Name = "urlBox";
             this.urlBox.Size = new System.Drawing.Size(154, 21);
-            this.urlBox.TabIndex = 25;
+            this.urlBox.TabIndex = 8;
             // 
             // apptCombo
             // 
@@ -283,7 +283,7 @@ namespace Software_II_C969_Dainen_Mann
             this.updateButton.Location = new System.Drawing.Point(226, 440);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
-            this.updateButton.TabIndex = 28;
+            this.updateButton.TabIndex = 13;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
@@ -293,7 +293,7 @@ namespace Software_II_C969_Dainen_Mann
             this.newButton.Location = new System.Drawing.Point(26, 440);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
-            this.newButton.TabIndex = 29;
+            this.newButton.TabIndex = 11;
             this.newButton.Text = "New";
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.newButton_Click);

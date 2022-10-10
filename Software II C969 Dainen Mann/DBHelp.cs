@@ -89,5 +89,32 @@ namespace Software_II_C969_Dainen_Mann
             }
         }
 
+        public static DataTable FillReports(string query, List<MySqlParameter> spl, string connStr)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connStr))
+                {
+                    if (conn.State == ConnectionState.Closed) { conn.Open(); }
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        if (spl.Count > 0) { cmd.Parameters.AddRange(spl.ToArray()); }
+                        using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                        {
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+                            spl.Clear();
+                            return dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                spl.Clear();
+                Logger.LogMessage("ErrorLog", ex.Message, "error", "SQL_FillDataTable");
+                return null;
+            }
+        }
     }
 }

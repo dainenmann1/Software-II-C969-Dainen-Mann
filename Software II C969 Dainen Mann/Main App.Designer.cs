@@ -86,7 +86,7 @@ namespace Software_II_C969_Dainen_Mann
             this.logoutButton.Location = new System.Drawing.Point(1090, 703);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(100, 30);
-            this.logoutButton.TabIndex = 5;
+            this.logoutButton.TabIndex = 4;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -160,6 +160,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.addApptButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);

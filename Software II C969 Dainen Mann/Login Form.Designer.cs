@@ -60,21 +60,21 @@ namespace Software_II_C969_Dainen_Mann
             this.userBox.Location = new System.Drawing.Point(99, 45);
             this.userBox.Name = "userBox";
             this.userBox.Size = new System.Drawing.Size(138, 21);
-            this.userBox.TabIndex = 2;
+            this.userBox.TabIndex = 1;
             // 
             // pwBox
             // 
             this.pwBox.Location = new System.Drawing.Point(99, 93);
             this.pwBox.Name = "pwBox";
             this.pwBox.Size = new System.Drawing.Size(138, 21);
-            this.pwBox.TabIndex = 3;
+            this.pwBox.TabIndex = 2;
             // 
             // loginButton
             // 
             this.loginButton.Location = new System.Drawing.Point(47, 153);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 4;
+            this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
@@ -84,7 +84,7 @@ namespace Software_II_C969_Dainen_Mann
             this.cancelButton.Location = new System.Drawing.Point(162, 153);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 5;
+            this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -102,6 +102,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.userLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);

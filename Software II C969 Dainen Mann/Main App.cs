@@ -20,7 +20,6 @@ namespace Software_II_C969_Dainen_Mann
 		public MainForm()
 		{
 			InitializeComponent();
-            NotifyUpcomingAppts();
             MainForm_Load(allRadio.Checked = true);
         }
 
@@ -119,7 +118,9 @@ namespace Software_II_C969_Dainen_Mann
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            ReportsForm reportForm = new ReportsForm();
+            reportForm.mainFormObject = this;
+            reportForm.Show();
         }
 
         //Refresh Button
@@ -136,6 +137,7 @@ namespace Software_II_C969_Dainen_Mann
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoadUpcomingAppointments();
+            NotifyUpcomingAppts();
         }
 
         //Add Customer Button

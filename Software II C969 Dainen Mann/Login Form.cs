@@ -15,47 +15,24 @@ namespace Software_II_C969_Dainen_Mann
 {
 	public partial class Login : Form
 	{
+		public string errorMessage = "The username and password did not match. Please try again";
 		public Login()
 		{
 			InitializeComponent();
+
+			//if statement for Spanish (Mexico) language
+			if (CultureInfo.CurrentUICulture.LCID == 2058)
+            {
+				this.Text = "Acceso";
+				userLabel.Text = "Nombre de usuario";
+				pwLabel.Text = "Clave";
+				loginButton.Text = "Acceso";
+				cancelButton.Text = "Cancelar";
+				errorMessage = "El nombre de usuario y la contrasena no coinciden, intentalo de nuevo";
+			}
 		}
 
-		public string errorMessage = "The username and password did not match. Please try again";
-		private void correctLang()
-        {
-			switch (RegionInfo.CurrentRegion.EnglishName)
-            {
-				case "United States":
-					showEnglish();
-					break;
-				case "Spanish":
-					showSpanish();
-					break;
-
-				default:
-					showEnglish();
-					break;
-            }
-        }
-
-		private void showEnglish()
-        {
-			this.Text = "Login";
-			userLabel.Text = "Username";
-			pwLabel.Text = "Password";
-			loginButton.Text = "Login";
-			cancelButton.Text = "Cancel";
-        }
-
-		private void showSpanish()
-        {
-			this.Text = "Acceso";
-			userLabel.Text = "Nombre de usuario";
-			pwLabel.Text = "Clave";
-			loginButton.Text = "Acceso";
-			cancelButton.Text = "Cancelar";
-			errorMessage = "El nombre de usuario y la contrasena no coinciden, intentalo de nuevo";
-        }
+		
 		static public int loginUser(string userName, string password)
 		{
 			MySqlConnection conn = new MySqlConnection(DBHelp.connStr);
@@ -97,7 +74,7 @@ namespace Software_II_C969_Dainen_Mann
 
         private void Login_Load(object sender, EventArgs e)
         {
-			correctLang();
+
 		}
 
         private void cancelButton_Click(object sender, EventArgs e)
