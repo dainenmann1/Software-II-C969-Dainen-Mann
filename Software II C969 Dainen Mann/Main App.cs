@@ -131,7 +131,8 @@ namespace Software_II_C969_Dainen_Mann
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            loginForm.Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -171,6 +172,13 @@ namespace Software_II_C969_Dainen_Mann
         private void allRadio_CheckedChanged(object sender, EventArgs e)
         {
             LoadUpcomingAppointments();
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            Search_Form searchForm = new Search_Form();
+            searchForm.mainFormObject = this;
+            searchForm.Show();
         }
     }
 }

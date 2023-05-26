@@ -39,11 +39,12 @@ namespace Software_II_C969_Dainen_Mann
             this.allRadio = new System.Windows.Forms.RadioButton();
             this.apptFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.sortbyLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addApptButton
             // 
-            this.addApptButton.Location = new System.Drawing.Point(22, 705);
+            this.addApptButton.Location = new System.Drawing.Point(22, 722);
             this.addApptButton.Name = "addApptButton";
             this.addApptButton.Size = new System.Drawing.Size(150, 27);
             this.addApptButton.TabIndex = 0;
@@ -53,9 +54,9 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // customerButton
             // 
-            this.customerButton.Location = new System.Drawing.Point(204, 705);
+            this.customerButton.Location = new System.Drawing.Point(22, 689);
             this.customerButton.Name = "customerButton";
-            this.customerButton.Size = new System.Drawing.Size(120, 27);
+            this.customerButton.Size = new System.Drawing.Size(150, 27);
             this.customerButton.TabIndex = 1;
             this.customerButton.Text = "Customers";
             this.customerButton.UseVisualStyleBackColor = true;
@@ -63,9 +64,9 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // reportButton
             // 
-            this.reportButton.Location = new System.Drawing.Point(368, 706);
+            this.reportButton.Location = new System.Drawing.Point(191, 722);
             this.reportButton.Name = "reportButton";
-            this.reportButton.Size = new System.Drawing.Size(120, 27);
+            this.reportButton.Size = new System.Drawing.Size(127, 27);
             this.reportButton.TabIndex = 2;
             this.reportButton.Text = "Reports";
             this.reportButton.UseVisualStyleBackColor = true;
@@ -73,9 +74,9 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(532, 705);
+            this.refreshButton.Location = new System.Drawing.Point(957, 703);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(120, 27);
+            this.refreshButton.Size = new System.Drawing.Size(106, 30);
             this.refreshButton.TabIndex = 3;
             this.refreshButton.Text = "Refresh";
             this.refreshButton.UseVisualStyleBackColor = true;
@@ -95,7 +96,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.weekRadio.AutoSize = true;
             this.weekRadio.Checked = true;
-            this.weekRadio.Location = new System.Drawing.Point(122, 39);
+            this.weekRadio.Location = new System.Drawing.Point(94, 39);
             this.weekRadio.Name = "weekRadio";
             this.weekRadio.Size = new System.Drawing.Size(56, 19);
             this.weekRadio.TabIndex = 7;
@@ -107,7 +108,7 @@ namespace Software_II_C969_Dainen_Mann
             // monthRadio
             // 
             this.monthRadio.AutoSize = true;
-            this.monthRadio.Location = new System.Drawing.Point(222, 39);
+            this.monthRadio.Location = new System.Drawing.Point(175, 39);
             this.monthRadio.Name = "monthRadio";
             this.monthRadio.Size = new System.Drawing.Size(60, 19);
             this.monthRadio.TabIndex = 8;
@@ -138,11 +139,22 @@ namespace Software_II_C969_Dainen_Mann
             // sortbyLabel
             // 
             this.sortbyLabel.AutoSize = true;
-            this.sortbyLabel.Location = new System.Drawing.Point(19, 9);
+            this.sortbyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.sortbyLabel.Location = new System.Drawing.Point(18, 16);
             this.sortbyLabel.Name = "sortbyLabel";
-            this.sortbyLabel.Size = new System.Drawing.Size(45, 15);
+            this.sortbyLabel.Size = new System.Drawing.Size(61, 20);
             this.sortbyLabel.TabIndex = 11;
             this.sortbyLabel.Text = "Sort By";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(191, 689);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(127, 27);
+            this.searchButton.TabIndex = 12;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // MainForm
             // 
@@ -150,6 +162,7 @@ namespace Software_II_C969_Dainen_Mann
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1230, 761);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.sortbyLabel);
             this.Controls.Add(this.apptFlowPanel);
             this.Controls.Add(this.allRadio);
@@ -183,6 +196,7 @@ namespace Software_II_C969_Dainen_Mann
         private System.Windows.Forms.RadioButton allRadio;
         private System.Windows.Forms.FlowLayoutPanel apptFlowPanel;
         private System.Windows.Forms.Label sortbyLabel;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 

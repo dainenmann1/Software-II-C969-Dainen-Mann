@@ -9,6 +9,7 @@ namespace Software_II_C969_Dainen_Mann
     public partial class Search_Form : Form
     {
         private string searchQuery;
+        public MainForm mainFormObject;
         public Search_Form()
         {
             InitializeComponent();
@@ -119,6 +120,11 @@ namespace Software_II_C969_Dainen_Mann
             typeCombo.SelectedIndex = -1;
             createdCombo.SelectedIndex = -1;
             gridSearchResults.DataSource = null;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

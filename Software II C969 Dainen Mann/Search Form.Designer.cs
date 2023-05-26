@@ -45,27 +45,30 @@ namespace Software_II_C969_Dainen_Mann
             this.typeLabel = new System.Windows.Forms.Label();
             this.createdLabel = new System.Windows.Forms.Label();
             this.gridSearchResults = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
             // closeButton
             // 
+            this.closeButton.BackColor = System.Drawing.SystemColors.HotTrack;
             this.closeButton.Location = new System.Drawing.Point(756, 479);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(87, 27);
             this.closeButton.TabIndex = 9;
             this.closeButton.Text = "Close";
-            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // searchButton
             // 
+            this.searchButton.BackColor = System.Drawing.SystemColors.HotTrack;
             this.searchButton.Location = new System.Drawing.Point(14, 479);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(87, 27);
             this.searchButton.TabIndex = 7;
             this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // custLabel
@@ -130,12 +133,14 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // clearButton
             // 
+            this.clearButton.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.clearButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.clearButton.Location = new System.Drawing.Point(124, 479);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(84, 27);
             this.clearButton.TabIndex = 8;
             this.clearButton.Text = "Clear";
-            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.UseVisualStyleBackColor = false;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // titleBox
@@ -184,15 +189,27 @@ namespace Software_II_C969_Dainen_Mann
             this.gridSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSearchResults.Location = new System.Drawing.Point(373, 58);
             this.gridSearchResults.Name = "gridSearchResults";
-            this.gridSearchResults.Size = new System.Drawing.Size(409, 390);
+            this.gridSearchResults.Size = new System.Drawing.Size(470, 390);
             this.gridSearchResults.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(11, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Search";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Search_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(855, 519);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.gridSearchResults);
             this.Controls.Add(this.createdLabel);
             this.Controls.Add(this.typeLabel);
@@ -210,7 +227,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.closeButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "Search_Form";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -241,5 +258,6 @@ namespace Software_II_C969_Dainen_Mann
         private System.Windows.Forms.Label typeLabel;
         private System.Windows.Forms.Label createdLabel;
         private System.Windows.Forms.DataGridView gridSearchResults;
+        private System.Windows.Forms.Label label1;
     }
 }
