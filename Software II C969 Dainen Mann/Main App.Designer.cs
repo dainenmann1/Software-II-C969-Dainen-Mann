@@ -129,6 +129,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // apptFlowPanel
             // 
+            this.apptFlowPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.apptFlowPanel.Location = new System.Drawing.Point(22, 64);
             this.apptFlowPanel.Name = "apptFlowPanel";
             this.apptFlowPanel.Size = new System.Drawing.Size(1168, 586);
@@ -147,6 +148,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1230, 761);
             this.Controls.Add(this.sortbyLabel);
             this.Controls.Add(this.apptFlowPanel);
@@ -160,6 +162,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.addApptButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Form";
             this.Load += new System.EventHandler(this.MainForm_Load);

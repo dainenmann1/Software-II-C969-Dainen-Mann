@@ -264,6 +264,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(667, 448);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nameBox);
@@ -290,6 +291,8 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.customerComboBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AddCustomer";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "AddCustomer";
             this.Load += new System.EventHandler(this.AddCustomer_Load);
             this.ResumeLayout(false);

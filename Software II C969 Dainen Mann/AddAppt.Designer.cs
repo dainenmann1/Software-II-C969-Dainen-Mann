@@ -300,6 +300,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // AddAppt
             // 
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(690, 490);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.updateButton);
@@ -330,6 +331,8 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.addButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "AddAppt";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.AddAppt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

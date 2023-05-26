@@ -68,6 +68,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.pwBox.Location = new System.Drawing.Point(99, 175);
             this.pwBox.Name = "pwBox";
+            this.pwBox.PasswordChar = '*';
             this.pwBox.Size = new System.Drawing.Size(138, 21);
             this.pwBox.TabIndex = 2;
             // 
@@ -116,6 +117,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(347, 307);
             this.Controls.Add(this.newUserLink);
             this.Controls.Add(this.label1);
@@ -127,6 +129,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.userLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Login";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);

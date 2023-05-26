@@ -114,6 +114,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(347, 307);
             this.Controls.Add(this.confirmPWBox);
             this.Controls.Add(this.label1);
@@ -125,6 +126,8 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.createButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Name = "NewUserForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "New User";
             this.ResumeLayout(false);
             this.PerformLayout();
