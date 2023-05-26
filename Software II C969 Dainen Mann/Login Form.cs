@@ -81,5 +81,11 @@ namespace Software_II_C969_Dainen_Mann
         {
 			Application.Exit();
         }
+
+        private void newUserLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+			NewUserForm newUserForm = new NewUserForm();
+			newUserForm.Show();
+		}
     }
 }

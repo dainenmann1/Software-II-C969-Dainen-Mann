@@ -107,6 +107,7 @@ namespace Software_II_C969_Dainen_Mann
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReportsForm";
+            this.Load += new System.EventHandler(this.ReportsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.reportDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

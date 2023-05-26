@@ -21,7 +21,6 @@ namespace Software_II_C969_Dainen_Mann
         public static List<MySqlParameter> spl = new List<MySqlParameter>();
         public static string ConnStr {get; set;}
 
-
         //MySQL methods
         public static MySqlDataReader ExecuteReader(string query, List<MySqlParameter> spl, string connStr)
         {

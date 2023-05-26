@@ -70,5 +70,10 @@ namespace Software_II_C969_Dainen_Mann
                 InactiveCustomers();
             }
         }
+
+        private void ReportsForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

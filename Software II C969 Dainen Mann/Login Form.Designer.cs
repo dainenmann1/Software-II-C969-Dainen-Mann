@@ -35,12 +35,14 @@ namespace Software_II_C969_Dainen_Mann
             this.pwBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.newUserLink = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // userLabel
             // 
             this.userLabel.AutoSize = true;
-            this.userLabel.Location = new System.Drawing.Point(12, 45);
+            this.userLabel.Location = new System.Drawing.Point(12, 115);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(65, 15);
             this.userLabel.TabIndex = 0;
@@ -49,7 +51,7 @@ namespace Software_II_C969_Dainen_Mann
             // pwLabel
             // 
             this.pwLabel.AutoSize = true;
-            this.pwLabel.Location = new System.Drawing.Point(12, 96);
+            this.pwLabel.Location = new System.Drawing.Point(16, 178);
             this.pwLabel.Name = "pwLabel";
             this.pwLabel.Size = new System.Drawing.Size(61, 15);
             this.pwLabel.TabIndex = 1;
@@ -57,21 +59,21 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // userBox
             // 
-            this.userBox.Location = new System.Drawing.Point(99, 45);
+            this.userBox.Location = new System.Drawing.Point(99, 112);
             this.userBox.Name = "userBox";
             this.userBox.Size = new System.Drawing.Size(138, 21);
             this.userBox.TabIndex = 1;
             // 
             // pwBox
             // 
-            this.pwBox.Location = new System.Drawing.Point(99, 93);
+            this.pwBox.Location = new System.Drawing.Point(99, 175);
             this.pwBox.Name = "pwBox";
             this.pwBox.Size = new System.Drawing.Size(138, 21);
             this.pwBox.TabIndex = 2;
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(47, 153);
+            this.loginButton.Location = new System.Drawing.Point(15, 266);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 3;
@@ -81,7 +83,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(162, 153);
+            this.cancelButton.Location = new System.Drawing.Point(116, 266);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
@@ -89,11 +91,34 @@ namespace Software_II_C969_Dainen_Mann
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label1.Location = new System.Drawing.Point(49, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 25);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "ApptScheduler";
+            // 
+            // newUserLink
+            // 
+            this.newUserLink.AutoSize = true;
+            this.newUserLink.Location = new System.Drawing.Point(271, 274);
+            this.newUserLink.Name = "newUserLink";
+            this.newUserLink.Size = new System.Drawing.Size(68, 15);
+            this.newUserLink.TabIndex = 6;
+            this.newUserLink.TabStop = true;
+            this.newUserLink.Text = "New User?";
+            this.newUserLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newUserLink_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 235);
+            this.ClientSize = new System.Drawing.Size(347, 307);
+            this.Controls.Add(this.newUserLink);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.pwBox);
@@ -118,5 +143,7 @@ namespace Software_II_C969_Dainen_Mann
 		private System.Windows.Forms.TextBox pwBox;
 		private System.Windows.Forms.Button loginButton;
 		private System.Windows.Forms.Button cancelButton;
-	}
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel newUserLink;
+    }
 }
