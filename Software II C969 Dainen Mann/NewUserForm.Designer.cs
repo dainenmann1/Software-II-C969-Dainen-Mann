@@ -41,6 +41,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // createButton
             // 
+            this.createButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.createButton.Location = new System.Drawing.Point(12, 272);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(75, 23);
@@ -51,6 +52,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // cancelButton
             // 
+            this.cancelButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cancelButton.Location = new System.Drawing.Point(260, 272);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
@@ -61,16 +63,16 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // maskedPWBox
             // 
-            this.maskedPWBox.Location = new System.Drawing.Point(128, 130);
+            this.maskedPWBox.Location = new System.Drawing.Point(151, 118);
             this.maskedPWBox.Name = "maskedPWBox";
             this.maskedPWBox.PasswordChar = '*';
-            this.maskedPWBox.Size = new System.Drawing.Size(100, 21);
+            this.maskedPWBox.Size = new System.Drawing.Size(124, 21);
             this.maskedPWBox.TabIndex = 2;
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(30, 77);
+            this.nameLabel.Location = new System.Drawing.Point(30, 63);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(65, 15);
             this.nameLabel.TabIndex = 3;
@@ -79,7 +81,7 @@ namespace Software_II_C969_Dainen_Mann
             // pwLabel
             // 
             this.pwLabel.AutoSize = true;
-            this.pwLabel.Location = new System.Drawing.Point(30, 136);
+            this.pwLabel.Location = new System.Drawing.Point(34, 121);
             this.pwLabel.Name = "pwLabel";
             this.pwLabel.Size = new System.Drawing.Size(61, 15);
             this.pwLabel.TabIndex = 4;
@@ -87,15 +89,15 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(128, 77);
+            this.nameBox.Location = new System.Drawing.Point(151, 60);
             this.nameBox.Name = "nameBox";
-            this.nameBox.Size = new System.Drawing.Size(100, 21);
+            this.nameBox.Size = new System.Drawing.Size(124, 21);
             this.nameBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 195);
+            this.label1.Location = new System.Drawing.Point(30, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 15);
             this.label1.TabIndex = 6;
@@ -104,17 +106,17 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // confirmPWBox
             // 
-            this.confirmPWBox.Location = new System.Drawing.Point(128, 195);
+            this.confirmPWBox.Location = new System.Drawing.Point(151, 179);
             this.confirmPWBox.Name = "confirmPWBox";
             this.confirmPWBox.PasswordChar = '*';
-            this.confirmPWBox.Size = new System.Drawing.Size(100, 21);
+            this.confirmPWBox.Size = new System.Drawing.Size(124, 21);
             this.confirmPWBox.TabIndex = 3;
             // 
             // NewUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(347, 307);
             this.Controls.Add(this.confirmPWBox);
             this.Controls.Add(this.label1);
@@ -125,6 +127,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.createButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "NewUserForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

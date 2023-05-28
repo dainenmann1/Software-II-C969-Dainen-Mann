@@ -42,6 +42,7 @@ namespace Software_II_C969_Dainen_Mann
             // userLabel
             // 
             this.userLabel.AutoSize = true;
+            this.userLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.userLabel.Location = new System.Drawing.Point(12, 115);
             this.userLabel.Name = "userLabel";
             this.userLabel.Size = new System.Drawing.Size(65, 15);
@@ -51,6 +52,7 @@ namespace Software_II_C969_Dainen_Mann
             // pwLabel
             // 
             this.pwLabel.AutoSize = true;
+            this.pwLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.pwLabel.Location = new System.Drawing.Point(16, 178);
             this.pwLabel.Name = "pwLabel";
             this.pwLabel.Size = new System.Drawing.Size(61, 15);
@@ -74,37 +76,42 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // loginButton
             // 
+            this.loginButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.loginButton.Location = new System.Drawing.Point(15, 266);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // cancelButton
             // 
+            this.cancelButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.cancelButton.Location = new System.Drawing.Point(116, 266);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 4;
             this.cancelButton.Text = "Exit";
-            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.label1.BackColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(49, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 25);
+            this.label1.Size = new System.Drawing.Size(172, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "ApptScheduler";
             // 
             // newUserLink
             // 
             this.newUserLink.AutoSize = true;
+            this.newUserLink.LinkColor = System.Drawing.Color.CornflowerBlue;
             this.newUserLink.Location = new System.Drawing.Point(271, 274);
             this.newUserLink.Name = "newUserLink";
             this.newUserLink.Size = new System.Drawing.Size(68, 15);
@@ -117,7 +124,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(347, 307);
             this.Controls.Add(this.newUserLink);
             this.Controls.Add(this.label1);

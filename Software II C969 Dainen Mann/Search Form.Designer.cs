@@ -51,7 +51,8 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // closeButton
             // 
-            this.closeButton.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.closeButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.closeButton.Location = new System.Drawing.Point(756, 479);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(87, 27);
@@ -62,7 +63,8 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // searchButton
             // 
-            this.searchButton.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.searchButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.searchButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.searchButton.Location = new System.Drawing.Point(14, 479);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(87, 27);
@@ -133,8 +135,8 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // clearButton
             // 
-            this.clearButton.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.clearButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.clearButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.clearButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearButton.Location = new System.Drawing.Point(124, 479);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(84, 27);

@@ -92,6 +92,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // addButton
             // 
+            this.addButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addButton.Location = new System.Drawing.Point(137, 404);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(87, 27);
@@ -103,6 +104,7 @@ namespace Software_II_C969_Dainen_Mann
             // updateButton
             // 
             this.updateButton.Enabled = false;
+            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.updateButton.Location = new System.Drawing.Point(239, 404);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(87, 27);
@@ -114,6 +116,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // clearButton
             // 
+            this.clearButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearButton.Location = new System.Drawing.Point(366, 404);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(87, 27);
@@ -124,6 +127,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // deleteButton
             // 
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.deleteButton.Location = new System.Drawing.Point(469, 404);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(87, 27);
@@ -134,6 +138,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // closeButton
             // 
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.closeButton.Location = new System.Drawing.Point(568, 404);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(87, 27);
@@ -144,6 +149,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // newButton
             // 
+            this.newButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.newButton.Location = new System.Drawing.Point(32, 404);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(87, 27);
@@ -264,7 +270,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(667, 448);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nameBox);
@@ -290,10 +296,11 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.cityComboBox);
             this.Controls.Add(this.customerComboBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "AddCustomer";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "AddCustomer";
+            this.Text = "Add Customer";
             this.Load += new System.EventHandler(this.AddCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

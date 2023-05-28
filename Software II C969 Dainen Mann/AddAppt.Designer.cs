@@ -60,6 +60,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // addButton
             // 
+            this.addButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.addButton.Location = new System.Drawing.Point(126, 440);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
@@ -70,6 +71,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // closeButton
             // 
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.closeButton.Location = new System.Drawing.Point(597, 440);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
@@ -81,9 +83,10 @@ namespace Software_II_C969_Dainen_Mann
             // apptFormLabel
             // 
             this.apptFormLabel.AutoSize = true;
+            this.apptFormLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.apptFormLabel.Location = new System.Drawing.Point(12, 9);
             this.apptFormLabel.Name = "apptFormLabel";
-            this.apptFormLabel.Size = new System.Drawing.Size(139, 15);
+            this.apptFormLabel.Size = new System.Drawing.Size(182, 20);
             this.apptFormLabel.TabIndex = 4;
             this.apptFormLabel.Text = "Edit/Modify Appointment";
             // 
@@ -183,6 +186,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // deleteButton
             // 
+            this.deleteButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.deleteButton.Location = new System.Drawing.Point(397, 440);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -193,6 +197,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // clearButton
             // 
+            this.clearButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearButton.Location = new System.Drawing.Point(497, 440);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
@@ -280,6 +285,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // updateButton
             // 
+            this.updateButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.updateButton.Location = new System.Drawing.Point(226, 440);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
@@ -290,6 +296,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // newButton
             // 
+            this.newButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.newButton.Location = new System.Drawing.Point(26, 440);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
@@ -300,7 +307,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // AddAppt
             // 
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(690, 490);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.updateButton);
@@ -330,9 +337,11 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.addButton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "AddAppt";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.Text = "Appointment";
             this.Load += new System.EventHandler(this.AddAppt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

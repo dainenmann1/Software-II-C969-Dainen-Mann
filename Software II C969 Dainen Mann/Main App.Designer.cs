@@ -44,58 +44,64 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // addApptButton
             // 
+            this.addApptButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.addApptButton.Location = new System.Drawing.Point(22, 722);
             this.addApptButton.Name = "addApptButton";
             this.addApptButton.Size = new System.Drawing.Size(150, 27);
             this.addApptButton.TabIndex = 0;
             this.addApptButton.Text = "Appointments";
-            this.addApptButton.UseVisualStyleBackColor = true;
+            this.addApptButton.UseVisualStyleBackColor = false;
             this.addApptButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // customerButton
             // 
+            this.customerButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.customerButton.Location = new System.Drawing.Point(22, 689);
             this.customerButton.Name = "customerButton";
             this.customerButton.Size = new System.Drawing.Size(150, 27);
             this.customerButton.TabIndex = 1;
             this.customerButton.Text = "Customers";
-            this.customerButton.UseVisualStyleBackColor = true;
+            this.customerButton.UseVisualStyleBackColor = false;
             this.customerButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // reportButton
             // 
+            this.reportButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.reportButton.Location = new System.Drawing.Point(191, 722);
             this.reportButton.Name = "reportButton";
             this.reportButton.Size = new System.Drawing.Size(127, 27);
             this.reportButton.TabIndex = 2;
             this.reportButton.Text = "Reports";
-            this.reportButton.UseVisualStyleBackColor = true;
+            this.reportButton.UseVisualStyleBackColor = false;
             this.reportButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // refreshButton
             // 
+            this.refreshButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.refreshButton.Location = new System.Drawing.Point(957, 703);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(106, 30);
             this.refreshButton.TabIndex = 3;
             this.refreshButton.Text = "Refresh";
-            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.UseVisualStyleBackColor = false;
             this.refreshButton.Click += new System.EventHandler(this.button4_Click);
             // 
             // logoutButton
             // 
+            this.logoutButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.logoutButton.Location = new System.Drawing.Point(1090, 703);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(100, 30);
             this.logoutButton.TabIndex = 4;
             this.logoutButton.Text = "Logout";
-            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // weekRadio
             // 
             this.weekRadio.AutoSize = true;
             this.weekRadio.Checked = true;
+            this.weekRadio.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.weekRadio.Location = new System.Drawing.Point(94, 39);
             this.weekRadio.Name = "weekRadio";
             this.weekRadio.Size = new System.Drawing.Size(56, 19);
@@ -108,6 +114,7 @@ namespace Software_II_C969_Dainen_Mann
             // monthRadio
             // 
             this.monthRadio.AutoSize = true;
+            this.monthRadio.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.monthRadio.Location = new System.Drawing.Point(175, 39);
             this.monthRadio.Name = "monthRadio";
             this.monthRadio.Size = new System.Drawing.Size(60, 19);
@@ -119,6 +126,7 @@ namespace Software_II_C969_Dainen_Mann
             // allRadio
             // 
             this.allRadio.AutoSize = true;
+            this.allRadio.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.allRadio.Location = new System.Drawing.Point(22, 39);
             this.allRadio.Name = "allRadio";
             this.allRadio.Size = new System.Drawing.Size(38, 19);
@@ -140,6 +148,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.sortbyLabel.AutoSize = true;
             this.sortbyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.sortbyLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.sortbyLabel.Location = new System.Drawing.Point(18, 16);
             this.sortbyLabel.Name = "sortbyLabel";
             this.sortbyLabel.Size = new System.Drawing.Size(61, 20);
@@ -148,19 +157,20 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // searchButton
             // 
+            this.searchButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.searchButton.Location = new System.Drawing.Point(191, 689);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(127, 27);
             this.searchButton.TabIndex = 12;
             this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(1230, 761);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.sortbyLabel);

@@ -74,6 +74,7 @@ namespace Software_II_C969_Dainen_Mann
             // closeButton
             // 
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.closeButton.Location = new System.Drawing.Point(835, 466);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(75, 23);
@@ -84,6 +85,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             // clearButton
             // 
+            this.clearButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.clearButton.Location = new System.Drawing.Point(736, 466);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(75, 23);
@@ -96,7 +98,7 @@ namespace Software_II_C969_Dainen_Mann
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.closeButton);
@@ -104,6 +106,7 @@ namespace Software_II_C969_Dainen_Mann
             this.Controls.Add(this.reportListCombo);
             this.Controls.Add(this.reportDataGrid);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Name = "ReportsForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
