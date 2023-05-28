@@ -29,7 +29,6 @@ namespace Software_II_C969_Dainen_Mann
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.reportDataGrid = new System.Windows.Forms.DataGridView();
             this.reportListCombo = new System.Windows.Forms.ComboBox();
             this.reportLabel = new System.Windows.Forms.Label();
@@ -44,14 +43,6 @@ namespace Software_II_C969_Dainen_Mann
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.reportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.reportDataGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.reportDataGrid.Location = new System.Drawing.Point(34, 74);
             this.reportDataGrid.Name = "reportDataGrid";
             this.reportDataGrid.Size = new System.Drawing.Size(760, 352);

@@ -29,7 +29,6 @@ namespace Software_II_C969_Dainen_Mann
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.closeButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
             this.custLabel = new System.Windows.Forms.Label();
@@ -190,14 +189,6 @@ namespace Software_II_C969_Dainen_Mann
             // gridSearchResults
             // 
             this.gridSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridSearchResults.DefaultCellStyle = dataGridViewCellStyle1;
             this.gridSearchResults.Location = new System.Drawing.Point(373, 58);
             this.gridSearchResults.Name = "gridSearchResults";
             this.gridSearchResults.Size = new System.Drawing.Size(470, 390);

@@ -37,8 +37,8 @@ namespace Software_II_C969_Dainen_Mann
 
         public string WithinBusinessHours(DateTime start, DateTime end)
         {
-            TimeSpan businessStart = TimeSpan.Parse("08:00");
-            TimeSpan businessEnd = TimeSpan.Parse("17:00");
+            TimeSpan businessStart = TimeSpan.Parse("00:00");
+            TimeSpan businessEnd = TimeSpan.Parse("24:00");
 
             if (start.Date == end.Date)
             {
