@@ -37,8 +37,8 @@ namespace Software_II_C969_Dainen_Mann
 
         public string WithinBusinessHours(DateTime start, DateTime end)
         {
-            TimeSpan businessStart = TimeSpan.Parse("00:00");
-            TimeSpan businessEnd = TimeSpan.Parse("24:00");
+            TimeSpan businessStart = TimeSpan.Parse("08:00");
+            TimeSpan businessEnd = TimeSpan.Parse("17:00");
 
             if (start.Date == end.Date)
             {
@@ -174,7 +174,7 @@ namespace Software_II_C969_Dainen_Mann
                         string businessHourMessage = WithinBusinessHours(startTimePicker.Value, endTimePicker.Value);
                         if (string.IsNullOrEmpty(businessHourMessage))
                         {
-                            if (!HasConflictingAppointments(apptCombo.SelectedValue.ToString(), comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
+                            if (!HasConflictingAppointments("", comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
                             {
                                 DBHelp.spl.Add(new MySqlParameter("@CustomerId", comboCustList.SelectedValue.ToString()));
                                 DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID.ToString()));
@@ -213,6 +213,8 @@ namespace Software_II_C969_Dainen_Mann
 
         private void AddAppt_Load(object sender, EventArgs e)
         {
+            startTimePicker.CustomFormat = "yyyy-MM-dd HH:mm";
+            endTimePicker.CustomFormat = "yyyy-MM-dd HH:mm";
             AddorUpdate();
             PopulateCustomerList();
             PopulateAppointmentList();
