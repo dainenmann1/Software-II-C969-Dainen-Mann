@@ -35,17 +35,28 @@ namespace Software_II_C969_Dainen_Mann
             if (conflictFound > 0) { return true; } else { return false; }
         }
 
-        public static bool appIsOutsideBusinessHours(DateTime startTime, DateTime endTime)
+        public string WithinBusinessHours(DateTime start, DateTime end)
         {
-            startTime = startTime.ToLocalTime();
-            endTime = endTime.ToLocalTime();
-            DateTime businessStart = DateTime.Today.AddHours(8); // 8am
-            DateTime businessEnd = DateTime.Today.AddHours(17); // 5pm
-            if (startTime.TimeOfDay > businessStart.TimeOfDay && startTime.TimeOfDay < businessEnd.TimeOfDay &&
-                endTime.TimeOfDay > businessStart.TimeOfDay && endTime.TimeOfDay < businessEnd.TimeOfDay)
-                return false;
+            TimeSpan businessStart = TimeSpan.Parse("00:00");
+            TimeSpan businessEnd = TimeSpan.Parse("24:00");
 
-            return true;
+            if (start.Date == end.Date)
+            {
+                if (start.TimeOfDay <= end.TimeOfDay)
+                {
+                    if (start.Hour < businessStart.Hours) { return "Meetings cannot be scheduled to start before business opens at 8:00AM."; }
+                    else if (end.Hour > businessEnd.Hours) { return "Meetings cannot be scheduled to end after business closes at 5:00PM."; }
+                    else { return ""; }
+                }
+                else
+                {
+                    return "Start time cannot be after end time.";
+                }
+            }
+            else
+            {
+                return "Meetings cannot be scheduled across multiple days.";
+            }
         }
 
         private bool CheckFieldsForError()
@@ -154,47 +165,50 @@ namespace Software_II_C969_Dainen_Mann
         }
         private void addButton_Click_1(object sender, EventArgs e)
         {
-            DateTime startTime = startTimePicker.Value.ToUniversalTime();
-            DateTime endTime = endTimePicker.Value.ToUniversalTime();
-
             try
             {
                 if (CheckFieldsForError())
                 {
                     if (MessageBox.Show("Create this appointment?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (!HasConflictingAppointments("", comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
+                        string businessHourMessage = WithinBusinessHours(startTimePicker.Value, endTimePicker.Value);
+                        if (string.IsNullOrEmpty(businessHourMessage))
                         {
-                            try
+                            if (!HasConflictingAppointments(apptCombo.SelectedValue.ToString(), comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
                             {
-                                if (appIsOutsideBusinessHours(startTime, endTime))
-                                    throw new apptException();
-                                else
-                                {
-                                    DBHelp.spl.Add(new MySqlParameter("@CustomerId", comboCustList.SelectedValue.ToString()));
-                                    DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID.ToString()));
-                                    DBHelp.spl.Add(new MySqlParameter("@Title", titleBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Description", descriptionBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Location", locationBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Contact", contactBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Type", typeBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Url", urlBox.Text));
-                                    DBHelp.spl.Add(new MySqlParameter("@Start", TimeZoneInfo.ConvertTimeToUtc(startTimePicker.Value, TimeZoneInfo.Local)));
-                                    DBHelp.spl.Add(new MySqlParameter("@End", TimeZoneInfo.ConvertTimeToUtc(endTimePicker.Value, TimeZoneInfo.Local)));
-                                    DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
-                                    DBHelp.spl.Add(new MySqlParameter("@User", DBHelp.UserName));
-                                    DBHelp.ExecuteNonQuery("insert into appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
-                                        "values (@CustomerId, @UserId, @Title, @Description, @Location, @Contact, @Type, @Url, @Start, @End, @CurUtcTime, @User, @CurUtcTime, @User)", DBHelp.spl, DBHelp.connStr);
+                                DBHelp.spl.Add(new MySqlParameter("@CustomerId", comboCustList.SelectedValue.ToString()));
+                                DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID.ToString()));
+                                DBHelp.spl.Add(new MySqlParameter("@Title", titleBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Description", descriptionBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Location", locationBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Contact", contactBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Type", typeBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Url", urlBox.Text));
+                                DBHelp.spl.Add(new MySqlParameter("@Start", TimeZoneInfo.ConvertTimeToUtc(startTimePicker.Value, TimeZoneInfo.Local)));
+                                DBHelp.spl.Add(new MySqlParameter("@End", TimeZoneInfo.ConvertTimeToUtc(endTimePicker.Value, TimeZoneInfo.Local)));
+                                DBHelp.spl.Add(new MySqlParameter("@CurUtcTime", DateTime.UtcNow));
+                                DBHelp.spl.Add(new MySqlParameter("@User", DBHelp.UserName));
+                                DBHelp.ExecuteNonQuery("insert into appointment (customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) " +
+                                    "values (@CustomerId, @UserId, @Title, @Description, @Location, @Contact, @Type, @Url, @Start, @End, @CurUtcTime, @User, @CurUtcTime, @User)", DBHelp.spl, DBHelp.connStr);
 
-                                    PopulateAppointmentList();
-                                }
+                                PopulateAppointmentList();
                             }
-                            catch (apptException ex) { ex.outsideBusHours(); }
+                            else
+                            {
+                                MessageBox.Show("Selected appointment times conflict with existing appointment for " + comboCustList.Text + ".");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(businessHourMessage);
                         }
                     }
                 }
             }
-            catch (apptException ex) { ex.conflictAppTime(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem updating appointment data." + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
 
         private void AddAppt_Load(object sender, EventArgs e)
@@ -250,15 +264,12 @@ namespace Software_II_C969_Dainen_Mann
                 {
                     if (MessageBox.Show("Make changes to this appointment?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (!HasConflictingAppointments(apptCombo.SelectedValue.ToString(), comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
+                        string businessHourMessage = WithinBusinessHours(startTimePicker.Value, endTimePicker.Value);
+                        if (string.IsNullOrEmpty(businessHourMessage))
                         {
-                            try
+                            if (!HasConflictingAppointments(apptCombo.SelectedValue.ToString(), comboCustList.SelectedValue.ToString(), startTimePicker.Value, endTimePicker.Value))
                             {
-                                if (appIsOutsideBusinessHours(startTime, endTime))
-                                    throw new apptException();
-                                else
-                                {
-                                    DBHelp.spl.Add(new MySqlParameter("@AppointmentId", apptCombo.SelectedValue.ToString()));
+                                DBHelp.spl.Add(new MySqlParameter("@AppointmentId", apptCombo.SelectedValue.ToString()));
                                     DBHelp.spl.Add(new MySqlParameter("@CustomerId", comboCustList.SelectedValue.ToString()));
                                     DBHelp.spl.Add(new MySqlParameter("@UserId", DBHelp.UserID.ToString()));
                                     DBHelp.spl.Add(new MySqlParameter("@Title", titleBox.Text));
@@ -275,14 +286,23 @@ namespace Software_II_C969_Dainen_Mann
                                     "start = @Start, end = @End, createDate = @CurUtcTime, createdBy = @User, lastUpdate = @CurUtcTime, lastUpdateBy = @User where appointmentId = @AppointmentId", DBHelp.spl, DBHelp.connStr);
 
                                     PopulateAppointmentList();
-                                }
                             }
-                            catch (apptException ex) { ex.outsideBusHours(); }
+                            else
+                            {
+                                MessageBox.Show("Selected appointment times conflict with existing appointment for " + comboCustList.Text + ".");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(businessHourMessage);
                         }
                     }
                 }
             }
-            catch (apptException ex) { ex.conflictAppTime(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Problem updating appointment data." + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
 
         private void newButton_Click(object sender, EventArgs e)
